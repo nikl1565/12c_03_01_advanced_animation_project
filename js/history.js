@@ -6,14 +6,11 @@ window.addEventListener("DOMContentLoaded", init);
 
 function init() {
     console.log("Dom loaded")
-    pageLoadAnimations();
     
-    setTimeout(function(){
-        gsap.registerPlugin(ScrollTrigger);
-        gsap.to("#downArrow", {opacity: 0, scrollTrigger:
-            {toggleActions: "play pause resume reset", start: "top 90%",end: "top 50%", trigger:"#timelineHistory", scrub:true,
-        }});
-    },701)
+    pageLoadAnimations();
+    loadGSAP();
+
+    
 }
 
 function pageLoadAnimations() {
@@ -46,4 +43,26 @@ function pageLoadAnimations() {
     });
 }
 
+function loadGSAP() {
+    console.log("loadGSAP");
+    gsap.registerPlugin(ScrollTrigger);
+    
+    setTimeout(function(){
+        
+        gsap.to("#downArrow", {opacity: 0, scrollTrigger:
+            {toggleActions: "play pause resume reset", start: "top 90%",end: "top 50%", trigger:"#timelineHistory", scrub:true,
+        }});
+    },701)
 
+    gsap.to(".timelineTop h2", {opacity: 1, scrollTrigger:
+        {toggleActions: "play pause resume reset", start: "top 90%",end: "top 60%", trigger:".timelineTop h2", scrub:true,
+    }});
+
+    const imagesAndText = document.querySelectorAll(".historyImages image, .imageText text");
+    
+    imagesAndText.forEach(element => {
+        gsap.to(element, {opacity: 1, scrollTrigger:
+            {toggleActions: "play pause resume reset", start: "top 95%",end: "top 70%", trigger: element, scrub:true,
+        }});
+    })
+}
