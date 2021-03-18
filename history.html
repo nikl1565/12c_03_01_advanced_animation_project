@@ -6,11 +6,115 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>12c.03.01 - Advanced Animation project</title>
     <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/history.css">
     <script src="js/history.js" type="module"></script>
 </head>
 <body>
-    <h1>History</h1>
+
+    <nav>
+        <div id="historyLogo">
+            <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 70">
+                <g>
+                  <path d="M4.69,62.06V17.38H8.12V13.94h3.44V10.5H15V7.06H59.69V51.75H56.25v3.44H52.81v3.43H49.38v3.44Zm41.25-3.44V20.81H8.12V58.62Zm3.44-44.68h3.43V10.5H15v3.44H11.56v3.44H49.38ZM18.44,38V31.12h3.44V27.69H32.19v3.43h3.43v3.44H32.19V31.12H21.88V38Zm3.44,13.75V48.31H18.44V44.88h3.44v3.43H32.19V41.44h3.43v6.87H32.19v3.44Zm0-10.31V38H32.19v3.44ZM52.81,51.75h3.44V13.94H52.81v3.44H49.38V55.19h3.43Z" fill="#1e1c1d"/>
+                  <path d="M66.56,62.06V17.38H70V13.94h3.44V10.5h3.44V7.06h44.68V51.75h-3.44v3.44h-3.43v3.43h-3.44v3.44Zm41.25-3.44V20.81H70V58.62Zm3.44-44.68h3.44V10.5H76.88v3.44H73.44v3.44h37.81ZM80.31,51.75V27.69h6.88v3.43h3.43V48.31h3.44V27.69H97.5V51.75H90.62V48.31H87.19V31.12H83.75V51.75Zm34.38,0h3.43V13.94h-3.43v3.44h-3.44V55.19h3.44Z" fill="#1e1c1d"/>
+                  <path d="M128.44,62.06V17.38h3.44V13.94h3.43V10.5h3.44V7.06h44.69V51.75H180v3.44h-3.44v3.43h-3.44v3.44Zm41.25-3.44V20.81H131.88V58.62Zm3.43-44.68h3.44V10.5H138.75v3.44h-3.44v3.44h37.81ZM142.19,51.75V27.69h17.19v3.43H145.62V38h13.76v3.44H145.62v6.87h13.76v3.44Zm34.37,0H180V13.94h-3.44v3.44h-3.44V55.19h3.44Z" fill="#1e1c1d"/>
+                  <path d="M190.31,62.06V17.38h3.44V13.94h3.44V10.5h3.43V7.06h44.69V51.75h-3.43v3.44h-3.44v3.43H235v3.44Zm41.25-3.44V20.81H193.75V58.62ZM235,13.94h3.44V10.5H200.62v3.44h-3.43v3.44H235ZM204.06,38V31.12h3.44V27.69h10.31v3.43h3.44v3.44h-3.44V31.12H207.5V38Zm3.44,13.75V48.31h-3.44V44.88h3.44v3.43h10.31V41.44h3.44v6.87h-3.44v3.44Zm0-10.31V38h10.31v3.44Zm30.94,10.31h3.44V13.94h-3.44v3.44H235V55.19h3.44Z" fill="#1e1c1d"/>
+                </g>
+              </svg>
+        </div>
+    </nav>
+
+    <section id="aboutHistory">
+        <div class="aboutTop">
+            <h1>1990</h1>
+            <article id="textDisplay"></article>
+
+            <template>
+                <span class="character"></span>
+            </template>
+        </div>
+        <div class="aboutBottom">
+            <p> 
+                The Super Nintendo Entertainment System (SNES),
+                also known as the Super NES or Super Nintendo,
+                 is a 16-bit home video game console developed by Nintendo.
+                 Following the Nintendo Entertainment System (NES)
+                 the console introduced advanced graphics and sound 
+                 capabilities compared with other systems at the time. 
+                 The SNES was a global success and 
+                 became one of the best-selling console of the 16-bit era.
+            </p>
+            <svg width="100" height="100" id="downArrow">
+                <path d="M 0 0 l 50 50 l 50 -50"/>
+            </svg>
+        </div>
+    </section>
+    
+    <section id="timelineHistory">
+        <div class="timelineTop">
+            <h2>Super Nintendo’s Legacy</h2>
+        </div>
+        <div id="SVGTimeline">
+            <svg width="100vw" height="auto" viewBox="0 -10 100 560">
+                <g class="path">
+                    <path d="M 50 0 V 525 
+                    M 40 0.2 H 60 
+                    M 50 25 H 95
+                    M 5 100 H 50
+                    M 50 175 H 95
+                    M 5 250 H 50
+                    M 50 325 H 95
+                    M 5 400 H 50
+                    M 43 525 H 57"/>
+                </g>
+                <g class="circles">
+                    <circle cx="50" cy="25" r="1"/>
+                    <circle cx="50" cy="100" r="1"/>
+                    <circle cx="50" cy="175" r="1"/>
+                    <circle cx="50" cy="250" r="1"/>
+                    <circle cx="50" cy="325" r="1"/>
+                    <circle cx="50" cy="400" r="1"/>
+                </g>
+                <g class="startAndFinishText">
+                    <text x="39" y="-2">Timeline</text>
+                    <text x="43.5" y="531">2000</text>
+                </g>
+                <g class="dates">
+                    <text x="66" y="22.8">1990</text>
+                    <text x="23" y="97.8">1991</text>
+                    <text x="66" y="172.8">1992</text>
+                    <text x="23" y="247.8">1994</text>
+                    <text x="66" y="322.8">1997</text>
+                    <text x="23" y="397.8">1999</text>
+                </g>
+                <g class="historyImages">
+                    <rect x="55" y="29" width="37" height="21" fill="white"/>
+                    <rect x="55" y="179" width="37" height="21" fill="white"/>
+                    <rect x="55" y="329" width="37" height="21" fill="white"/>
+                    <rect x="8" y="104" width="37" height="21" fill="white"/>
+                    <rect x="8" y="254" width="37" height="21" fill="white"/>
+                    <rect x="8" y="404" width="37" height="21" fill="white"/>
+                </g>
+                <g class="imageText">
+                    <text x="55" y="55" width="37" height="30" lengthAdjust="spacing">
+                        <tspan x="55" y="55">In 1990 the SNES is</tspan>
+                        <tspan x="55" y="60">released in Japan, just in</tspan>
+                        <tspan x="55" y="65">time for Christmas and</tspan>
+                        <tspan x="55" y="70">sells an ends up selling</tspan>
+                        <tspan x="55" y="75">an estimated 2 million</tspan>
+                        <tspan x="55" y="80">copies within it's first</tspan>
+                        <tspan x="55" y="85">year on the market.</tspan>
+                        <tspan x="55" y="90">This would later become </tspan>
+                        <tspan x="55" y="95">the weakest sales of the</tspan>
+                        <tspan x="55" y="100">SNES by a land slide.</tspan>
+                    </text>
+                </g>
+            </svg>
+        </div>
+    </section>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/ScrollTrigger.min.js"></script>
 </body>
 </html>

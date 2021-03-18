@@ -1,0 +1,30 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Global font styling */
+
+@font-face {
+  font-family: "courierprime";
+  src: url("fonts/courierprime-regular-webfont.woff2");
+}
+
+@font-face {
+  font-family: "pixellari";
+  src: url("fonts/pixellari-webfont.woff2");
+}
+
+h1 {
+  font-family: "pixellari";
+}
+
+p {
+  font-family: "courierprime";
+}
