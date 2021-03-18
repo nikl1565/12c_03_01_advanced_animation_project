@@ -1,0 +1,182 @@
+body {
+  background-color: #1e1c1d;
+}
+
+/* About styling */
+
+nav {
+  background-color: #ce3333;
+  display: flex;
+  justify-content: center;
+}
+
+nav svg {
+  width: 25vh;
+  padding-top: 35px;
+}
+
+/* #aboutHistory span {
+} */
+
+h1 {
+  display: none;
+}
+
+h2 {
+  color: #ce3333;
+  font-size: 7vh;
+  padding: 50px;
+  text-align: center;
+  font-family: pixellari;
+}
+
+p {
+  margin: 0;
+  color: #f0f0f0;
+}
+
+.character {
+  margin: 0;
+  font-size: 15vh;
+  color: #1e1c1d;
+  align-self: center;
+  font-family: "pixellari";
+}
+
+#textDisplay {
+  display: flex;
+}
+
+.aboutTop {
+  background-color: #ce3333;
+  display: flex;
+  justify-content: center;
+  height: 30vh;
+}
+
+.characterAnimation {
+  animation: click;
+  animation-duration: 1.5s;
+}
+
+.secondarycharacterAnimation {
+  animation: bump;
+  animation-duration: 1.5s;
+}
+
+@keyframes click {
+  0% {
+    animation-timing-function: ease-in;
+    transform: translateY(-6vh);
+  }
+
+  80% {
+    transform: translateY(-7vh);
+  }
+
+  90% {
+    transform: translateY(0vh);
+  }
+
+  96% {
+    animation-timing-function: ease-out;
+    transform: translateY(1vh);
+  }
+
+  100% {
+    animation-timing-function: ease-out;
+    transform: translateY(0vh);
+  }
+}
+
+@keyframes bump {
+  90% {
+    transform: translateY(0vh);
+  }
+
+  96% {
+    animation-timing-function: ease-out;
+    transform: translateY(1vh);
+  }
+
+  100% {
+    animation-timing-function: ease-out;
+    transform: translateY(0vh);
+  }
+}
+
+.aboutBottom {
+  padding: 50px;
+  height: 60vh;
+  position: relative;
+}
+
+.aboutBottom p {
+  animation: bottomFadeIn;
+  animation-duration: 0.7s;
+}
+
+@keyframes bottomFadeIn {
+  0% {
+    animation-timing-function: ease-out;
+    transform: translateY(1vh);
+    opacity: 0;
+  }
+  100% {
+    animation-timing-function: ease-in;
+    transform: translateY(0vh);
+    opacity: 1;
+  }
+}
+
+#downArrow {
+  stroke: #ce3333;
+  stroke-width: 7;
+  fill: none;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  margin-left: -50px;
+  animation: bottomFadeIn;
+  animation-duration: 0.7s;
+}
+
+/* timeline History styling */
+
+/* #timelineHistory {
+} */
+
+#SVGTimeline svg {
+  stroke: #f0f0f0;
+  stroke-width: 0.4;
+}
+
+#SVGTimeline .circles {
+  stroke: none;
+  fill: #f0f0f0;
+}
+
+#SVGTimeline .startAndFinishText {
+  font-family: verdana;
+  stroke: none;
+  fill: #f0f0f0;
+  font-size: 5px;
+}
+
+#SVGTimeline .dates {
+  font-family: verdana;
+  stroke: none;
+  fill: #f0f0f0;
+  font-size: 5px;
+}
+
+#SVGTimeline .historyImages {
+  fill: #f0f0f0;
+}
+
+#SVGTimeline .imageText text {
+  fill: #f0f0f0;
+  font-size: 3px;
+  stroke-width: 0.1;
+  font-family: courierprime;
+}
