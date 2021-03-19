@@ -11,6 +11,52 @@
     <script src="js/configurator.js" type="module"></script>
 </head>
 <body>
-    <h1>Configurator</h1>
+    <header class="c-site-header"></header>
+
+    <main class="c-site-content">
+        <div class="o-container">
+            <h1>SNES configurator</h1>
+        <section class="c-configurator">
+            <article class="c-tv">
+                <div class="c-tv__frame">
+                    <div class="c-tv__screen" data-js-hook="screen"></div>
+                    <div class="c-tv__button-group">
+                        <button class="c-tv__button"></button>
+                        <button class="c-tv__button c-tv__button--primary"></button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="c-remote">
+                <div class="c-remote__frame">
+                <div class="c-remote__button-group">
+                        <img class="c-remote__button" src="images/icons/power-button.svg" alt="Red power button">
+                        <img class="c-remote__button" src="images/icons/mute.svg" alt="Grey mute button">
+                </div>
+                <div class="c-remote__option-group">
+                    <h2 class="c-remote__option-title">Colors</h2>
+                    <ul class="c-option-list"></ul>
+                </div>
+                <div class="c-remote__option-group">
+                    <h2 class="c-remote__option-title">Stickers</h2>
+                    <ul class="c-option-list"></ul>
+                </div>
+                <div class="c-remote__option-group">
+                    <h2 class="c-remote__option-title">Text</h2>
+                    <ul class="c-option-list"></ul>
+                </div>
+                <div class="c-remote__option-group">
+                    <h2 class="c-remote__option-title">Games</h2>
+                    <ul class="c-option-list"></ul>
+                </div>
+                </div>
+            </article>
+
+        </section>
+        </div>
+    </main>
+
+    <footer class="c-site-footer"></footer>
+
 </body>
 </html>
