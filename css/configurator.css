@@ -38,8 +38,6 @@ img {
     height: auto;
 }
 
-/* Objects */
-
 .o-container {
     max-width: var(--max-width);
     margin-left: auto;
@@ -48,17 +46,15 @@ img {
     padding-right: var(--gutter);
 }
 
-/***** 
-*
-*  Components
-*
-*****/
-
 .c-site-content {
     margin: var(--gutter) 0;
 }
 
-/* Configurator */
+/***** 
+*
+*  Configurator
+*
+*****/
 
 /* TV */
 
@@ -130,6 +126,26 @@ img {
     font-family: sans-serif;
     font-weight: normal;
     margin-bottom: 1rem;
+}
+
+.c-option-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    list-style: none;
+    gap: 0.75rem;
+}
+
+.c-color {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    transition: transform ease-in-out 0.3s;
+    background-color: var(--color);
+}
+
+.c-color.is-chosen {
+    transform: scale(1.125);
 }
 
 @media (min-width: 1000px) {
