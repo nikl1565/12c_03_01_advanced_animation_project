@@ -50,6 +50,7 @@ function makeEditable(settings) {
     const screen = document.querySelector("[data-js-hook=screen]");
 
     const sticker = document.querySelector(`.c-sticker[data-sticker-id="${settings.stickerId}"]`);
+    changeActiveSticker(sticker);
     const rotateButton = sticker.querySelector(`[data-sticker-action="rotate"]`);
     const resizeButton = sticker.querySelector(`[data-sticker-action="resize"]`);
     const deleteButton = sticker.querySelector(`[data-sticker-action="delete"]`);
@@ -90,6 +91,7 @@ function makeEditable(settings) {
         event.stopPropagation();
         rotate.disable();
         resize.disable();
+        changeActiveSticker(sticker);
         move.enable().startDrag(event);
     });
 
@@ -118,7 +120,6 @@ function makeEditable(settings) {
         rotate.kill();
         resize.kill();
         sticker.remove();
-        console.log("lol");
     });
 
     // Duplicate click
@@ -139,5 +140,15 @@ function makeEditable(settings) {
         screen.append(clone);
 
         makeEditable(settings);
+    }
+
+    function changeActiveSticker(newActiveSticker) {
+        const activeSticker = document.querySelector(".c-sticker.is-active");
+
+        if (activeSticker) {
+            activeSticker.classList.remove("is-active");
+        }
+
+        newActiveSticker.classList.add("is-active");
     }
 }

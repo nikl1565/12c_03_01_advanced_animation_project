@@ -168,7 +168,7 @@ img {
 }
 
 .c-sticker.is-active > .c-sticker__options {
-    display: block;
+    display: flex;
 }
 
 .c-sticker__options {
@@ -178,40 +178,25 @@ img {
     right: 0;
     z-index: 1;
     pointer-events: none;
-    display: flex;
     justify-content: center;
     align-items: flex-end;
     gap: 1rem;
     min-width: 160px;
+    display: none;
 }
 
 .c-sticker__option-icon {
     stroke: #fff;
     cursor: pointer;
     pointer-events: visible;
-    /* position: absolute; */
 }
 
 .c-sticker__option-icon--resize {
     cursor: nwse-resize;
-    bottom: 0;
-    right: 0;
 }
 
 .c-sticker__option-icon--duplicate {
     cursor: copy;
-    top: 0;
-    left: 0;
-}
-
-.c-sticker__option-icon--rotate {
-    top: 0;
-    right: 0;
-}
-
-.c-sticker__option-icon--delete {
-    bottom: 0;
-    left: 0;
 }
 
 .c-sticker__image {

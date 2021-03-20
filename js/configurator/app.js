@@ -25,14 +25,6 @@ async function getData(url) {
     document.querySelector("[data-js-hook=screen]").innerHTML += data;
 }
 
-// TEST
-
-gsap.registerPlugin(Draggable);
-
-Draggable.create("#star", {
-    bounds: document.querySelector(".c-tv__screen"),
-});
-
 /* 
 
 
@@ -50,33 +42,6 @@ async function getSVG(url) {
     let svgData = await response.text();
     document.querySelector(".carSVG").innerHTML += svgData;
     colorCar();
-}
-
-//car coloring
-function colorCar() {
-    const groups = document.querySelectorAll(".g-to-color");
-    console.log(groups);
-    groups.forEach((group) => {
-        group.addEventListener("click", storeElement);
-        group.style.fill = "#fff";
-
-        function storeElement() {
-            groups.forEach((group) => {
-                group.classList.remove("g-to-color_active");
-            });
-            elementToPaint = group;
-            group.classList.add("g-to-color_active");
-            group.addEventListener("click", toggleActive);
-
-            console.log(group);
-        }
-
-        function toggleActive() {
-            group.classList.remove("g-to-color_active");
-            group.removeEventListener("click", toggleActive);
-            elementToPaint = undefined;
-        }
-    });
 }
 
 //----------FEATURE FUNCTION---------------
