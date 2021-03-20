@@ -8,6 +8,9 @@ export function stickers() {
         stickerId: 1,
     };
 
+    // TODO: Refactor
+    document.querySelector(".c-tv__screen").addEventListener("click", unselect);
+
     settings.stickers.forEach((sticker) => {
         makeStickerOption(sticker, settings.templates.stickerOption);
     });
@@ -40,6 +43,16 @@ export function stickers() {
             makeEditable(settings);
 
             settings.stickerId++;
+        }
+    }
+
+    function unselect(event) {
+        const clicked = event.target;
+        console.log(clicked);
+
+        if (clicked.classList.contains("c-tv__screen") || clicked.classList.contains("snes")) {
+            const activeSticker = document.querySelector(".c-sticker.is-active");
+            activeSticker.classList.remove("is-active");
         }
     }
 
