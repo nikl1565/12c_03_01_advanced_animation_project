@@ -25,6 +25,14 @@ async function getData(url) {
     document.querySelector("[data-js-hook=screen]").innerHTML += data;
 }
 
+// TEST
+
+gsap.registerPlugin(Draggable);
+
+Draggable.create("#star", {
+    bounds: document.querySelector(".c-tv__screen"),
+});
+
 /* 
 
 

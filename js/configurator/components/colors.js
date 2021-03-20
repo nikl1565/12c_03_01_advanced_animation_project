@@ -1,35 +1,36 @@
 export function colors() {
     colorButtons();
+    colorCar();
 
     console.log("Colors component is loaded...");
 }
 
-function colorButtons() {
-    const settings = {
-        colors: [
-            "#FF0000", //
-            "#FF8000",
-            "#FFFF00",
-            "#00FF00",
-            "#00FF80",
-            "#00FFFF",
-            "#0080FF",
-            "#0000FF",
-            "#8000FF",
-            "#FF00FF",
-            "#FF0080",
-            "#FFFFFF",
-        ],
-        templates: {
-            color: document.querySelector(".t-color").content,
-        },
-        hooks: {
-            colorList: document.querySelector("[data-field=colors]"),
-        },
-    };
+const settings = {
+    elementToPaint: undefined,
+    colors: [
+        "#FF0000", //
+        "#FF8000",
+        "#FFFF00",
+        "#00FF00",
+        "#00FF80",
+        "#00FFFF",
+        "#0080FF",
+        "#0000FF",
+        "#8000FF",
+        "#FF00FF",
+        "#FF0080",
+        "#FFFFFF",
+    ],
+    templates: {
+        color: document.querySelector(".t-color").content,
+    },
+    hooks: {
+        colorList: document.querySelector("[data-field=colors]"),
+    },
+};
 
+function colorButtons() {
     showColorButtons();
-    startColorButtons();
 
     function showColorButtons() {
         const templateColor = settings.templates.color;
@@ -39,33 +40,28 @@ function colorButtons() {
             clone.querySelector(".c-color").setAttribute("data-color", color);
             clone.querySelector(".c-color").style.setProperty("--color", color);
 
-            if (color === settings.pickedColor) {
-                clone.querySelector(".c-color-picker__color").classList.add("is-active");
-            }
+            // TODO: Highlight pickedColor
+            // if (color === settings.pickedColor) {
+            //     clone.querySelector(".c-color-picker__color").classList.add("is-active");
+            // }
+
+            clone.querySelector(".c-color").addEventListener("click", changeColor);
 
             settings.hooks.colorList.appendChild(clone);
         });
     }
 
-    function startColorButtons() {
-        const colorButtons = document.querySelectorAll(".c-color-picker__color");
-
-        colorButtons.forEach((colorButton) => {
-            colorButton.addEventListener("click", clickColor);
-        });
-    }
-
-    function clickColor() {
+    function changeColor() {
         const clickedColorButton = this;
         console.log(clickedColorButton.dataset.color);
         console.log("clicked button", clickedColorButton);
-        const clickedColorButtonInner = clickedColorButton.querySelector(".c-color-picker__color-inner");
+        const clickedColorButtonInner = clickedColorButton;
 
-        if (elementToPaint === undefined) {
-            console.log("no car part chosen");
+        if (settings.elementToPaint === undefined) {
+            console.log("no part chosen");
         } else {
             const start = clickedColorButtonInner.getBoundingClientRect();
-            const end = elementToPaint.getBoundingClientRect();
+            const end = settings.elementToPaint.getBoundingClientRect();
 
             const elementHeight = end.height / 2;
             console.log(elementHeight);
@@ -88,7 +84,7 @@ function colorButtons() {
             function animateColor() {
                 clickedColorButtonInner.classList.remove("animate-color-in");
                 clickedColorButtonInner.removeEventListener("animationend", animateColor);
-                elementToPaint.style.fill = clickedColorButton.dataset.color;
+                settings.elementToPaint.style.fill = clickedColorButton.dataset.color;
             }
         }
 
@@ -105,7 +101,7 @@ function colorButtons() {
 
 //car coloring
 function colorCar() {
-    const groups = document.querySelectorAll(".g-to-color");
+    const groups = document.querySelectorAll(".snes__part");
     console.log(groups);
     groups.forEach((group) => {
         group.addEventListener("click", storeElement);
@@ -115,7 +111,7 @@ function colorCar() {
             groups.forEach((group) => {
                 group.classList.remove("g-to-color_active");
             });
-            elementToPaint = group;
+            settings.elementToPaint = group;
             group.classList.add("g-to-color_active");
             group.addEventListener("click", toggleActive);
 
@@ -128,45 +124,4 @@ function colorCar() {
             elementToPaint = undefined;
         }
     });
-}
-
-//----------FEATURE FUNCTION---------------
-// The model of all features
-const features = {
-    gun: false,
-    rims: false,
-    lips: false,
-    flames: false,
-};
-
-function featureButtons() {
-    document.querySelectorAll(".option").forEach((option) => option.addEventListener("click", toggleOption));
-}
-
-function toggleOption(event) {
-    const target = event.currentTarget;
-    const feature = target.dataset.feature;
-
-    //Takes the state of the feature and makes it reverse aka toogle
-    features[feature] = !features[feature];
-
-    //Features feature is true
-    if (features[feature]) {
-        // feature added
-        console.log(`Feature ${feature} is turned on!`);
-
-        // If feature is (now) turned on:
-        target.classList.add("chosen");
-        // - un-hide the feature-layer(s) in the #product-preview;
-        document.querySelector(`.carSVG [data-feature=${feature}]`).classList.remove("hide");
-    } else {
-        // feature removed
-        console.log(`Feature ${feature} is turned off!`);
-
-        // Else - if the feature (became) turned off:
-        // - no longer mark target as chosen
-        target.classList.remove("chosen");
-        // - hide the feature-layer(s) in the #product-preview
-        document.querySelector(`.carSVG [data-feature=${feature}]`).classList.add("hide");
-    }
 }
