@@ -1,6 +1,7 @@
 nav {
   display: flex;
   justify-content: center;
+  margin-bottom: 25px;
 }
 
 nav svg {
@@ -13,7 +14,7 @@ nav svg {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  margin-bottom: 50px;
 }
 
 .buttons {
@@ -100,6 +101,7 @@ h3 {
 }
 
 .customer_selection_card {
+  cursor: pointer;
   border: 5px solid white;
   margin: 10px;
   border-radius: 5px;
@@ -129,6 +131,7 @@ h3 {
   position: relative;
   margin-left: 25vw;
   height: 50vw;
+  margin-bottom: 50px;
 }
 
 .pixel_art {
@@ -138,7 +141,7 @@ h3 {
   pointer-events: none;
 }
 
-.pixel_art_customer {
+.pixel_art_customer_first {
   image-rendering: pixelated;
   position: absolute;
   top: 25.5vw;

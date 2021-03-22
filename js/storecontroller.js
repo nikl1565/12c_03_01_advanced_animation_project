@@ -8,29 +8,29 @@ function init() {
   addListeners();
 }
 
-let keyPresses = {};
 let customer = "";
+const storedCustomerIndex = sessionStorage.getItem("chosencustomer");
+const enterStatus = sessionStorage.getItem("enterstatus");
+console.log(enterStatus);
 
 function addListeners() {
   document.querySelector(".enter_sign").addEventListener("click", enterStoreAnimation);
-  window.addEventListener("keydown", KeyDownListener, false);
-  window.addEventListener("keyup", KeyUpListener, false);
 
-  const customers = document.querySelectorAll(".customer_selection_card");
-  customers.forEach((customer) => {
-    console.log(customer);
-    customer.addEventListener("click", chooseCustomer);
-    customer.addEventListener("mouseover", rotateImg);
-    bouncyAnim(customer.querySelector(".pixel_art_selection"));
-  });
-
-  function KeyDownListener(event) {
-    keyPresses[event.key] = true;
-    storeAnimationController();
-  }
-
-  function KeyUpListener(event) {
-    keyPresses[event.key] = false;
+  if (enterStatus === "true") {
+    document.querySelector(".modal").classList.add("hide");
+    const storedCustomer = document.querySelector(`.pixel_art_customer_${storedCustomerIndex}`);
+    customer = storedCustomer;
+    storedCustomer.classList.remove("hide");
+    exitAnim(storedCustomer);
+    bouncyAnim(storedCustomer);
+  } else {
+    const customers = document.querySelectorAll(".customer_selection_card");
+    customers.forEach((customer) => {
+      console.log(customer);
+      customer.addEventListener("click", chooseCustomer);
+      customer.addEventListener("mouseover", rotateImg);
+      bouncyAnim(customer.querySelector(".pixel_art_selection"));
+    });
   }
 }
 
@@ -39,14 +39,10 @@ function storeAnimationController(customerSprite) {
     rotateChosenSpawn(customerSprite);
     bouncyAnim(customerSprite);
   }
-
-  if (keyPresses.d) {
-    enterAnim(customerSprite);
-    bouncyAnim(customerSprite);
-  }
 }
 
 function enterStoreAnimation() {
+  sessionStorage.setItem("enterstatus", "true");
   enterAnim(customer);
   bouncyAnim(customer);
 }
@@ -58,7 +54,8 @@ function chooseCustomer(event) {
       closeModal(document.querySelector("#customer_selection_popup"));
     }, 2000);
     setTimeout(() => {
-      const chosenCustomer = document.querySelector(".pixel_art_customer");
+      const chosenCustomer = document.querySelector(".pixel_art_customer_first");
+      sessionStorage.setItem("chosencustomer", "first");
       customer = chosenCustomer;
       chosenCustomer.classList.remove("hide");
       document.querySelector(".modal").classList.add("hide");
@@ -71,6 +68,7 @@ function chooseCustomer(event) {
     }, 2000);
     setTimeout(() => {
       const chosenCustomer = document.querySelector(".pixel_art_customer_second");
+      sessionStorage.setItem("chosencustomer", "second");
       customer = chosenCustomer;
       chosenCustomer.classList.remove("hide");
       document.querySelector(".modal").classList.add("hide");
