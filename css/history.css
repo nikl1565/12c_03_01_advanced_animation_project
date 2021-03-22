@@ -162,25 +162,17 @@ p {
 }
 
 #SVGTimeline .startAndFinishText {
-  font-family: verdana;
+  font-family: courierprime;
   stroke: none;
   fill: #f0f0f0;
   font-size: 5px;
 }
 
 #SVGTimeline .dates {
-  font-family: verdana;
+  font-family: courierprime;
   stroke: none;
   fill: #f0f0f0;
   font-size: 5px;
-}
-
-#SVGTimeline .historyImages {
-  fill: #f0f0f0;
-}
-
-#SVGTimeline .historyImages image {
-  opacity: 0;
 }
 
 #SVGTimeline .imageText text {
@@ -188,5 +180,64 @@ p {
   font-size: 3px;
   stroke-width: 0.1;
   font-family: courierprime;
-  opacity: 0;
+}
+
+#above800px {
+  display: none;
+}
+
+/* MEDIA QUARRY*/
+
+@media (min-width: 800px) {
+  #below800px {
+    display: none;
+  }
+  #above800px {
+    display: flex;
+  }
+
+  p {
+    margin: 0;
+    color: #f0f0f0;
+    font-size: 2vw;
+    margin-top: 25px;
+    margin-left: 100px;
+    margin-right: 100px;
+  }
+
+  #SVGTimeline svg {
+    stroke: #f0f0f0;
+    stroke-width: 0.3;
+  }
+
+  #SVGTimeline .lines {
+    stroke: #f0f0f0;
+    stroke-width: 0.2;
+  }
+
+  #SVGTimeline .circles {
+    stroke: none;
+    fill: #f0f0f0;
+  }
+
+  #SVGTimeline .startAndFinishText {
+    stroke: none;
+    fill: #f0f0f0;
+    font-size: 2px;
+  }
+
+  #SVGTimeline .dates {
+    stroke: none;
+    fill: #f0f0f0;
+    font-size: 2px;
+  }
+
+  #SVGTimeline .imageText text {
+    fill: #f0f0f0;
+    font-size: 1px;
+    stroke-width: 0.02;
+    font-family: courierprime;
+  }
+  #SVGTimeline svg {
+  }
 }
