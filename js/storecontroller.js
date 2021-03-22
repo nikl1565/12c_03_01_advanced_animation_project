@@ -74,6 +74,19 @@ function chooseCustomer(event) {
       document.querySelector(".modal").classList.add("hide");
       storeAnimationController(chosenCustomer);
     }, 3000);
+  } else if (event.target.dataset.customer === "third") {
+    rotateChosen(event.target.querySelector(".pixel_art_selection"));
+    setTimeout(() => {
+      closeModal(document.querySelector("#customer_selection_popup"));
+    }, 2000);
+    setTimeout(() => {
+      const chosenCustomer = document.querySelector(".pixel_art_customer_third");
+      sessionStorage.setItem("chosencustomer", "third");
+      customer = chosenCustomer;
+      chosenCustomer.classList.remove("hide");
+      document.querySelector(".modal").classList.add("hide");
+      storeAnimationController(chosenCustomer);
+    }, 3000);
   }
 }
 
