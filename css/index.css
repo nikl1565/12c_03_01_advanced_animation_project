@@ -17,3 +17,187 @@
 .history_b {
   width: 430px;
 }
+
+body {
+  background-color: #1e1c1d;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #1e1c1d80;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  overflow-y: auto;
+}
+
+#customer_selection_popup {
+  border-radius: 10px;
+  border: 10px solid #ce3333;
+
+  max-height: 80%;
+
+  text-align: center;
+  color: white;
+  padding: 20px;
+  margin: 20px;
+  background-color: #1e1c1de1;
+
+  overflow-y: auto;
+}
+
+.stats {
+  text-align: left;
+  margin-left: 25px;
+}
+
+.no_pointer_events {
+  pointer-events: none;
+}
+
+#customer_selection {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.customer_selection_card {
+  border: 5px solid white;
+  margin: 10px;
+  border-radius: 5px;
+}
+
+.pixel_art_selection {
+  image-rendering: pixelated;
+  width: 100%;
+  max-width: 40%;
+  height: auto;
+  z-index: 1;
+}
+
+.customer_img_container {
+  pointer-events: none;
+
+  background-color: rgba(165, 200, 245, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 200px;
+}
+
+#pixel_art_container {
+  position: relative;
+  margin-left: 25vw;
+}
+
+.pixel_art {
+  width: 50vw;
+  image-rendering: pixelated;
+  position: absolute;
+  pointer-events: none;
+}
+
+.pixel_art_customer {
+  image-rendering: pixelated;
+  position: absolute;
+  top: 25.5vw;
+  left: 2vw;
+  width: 5.4vw;
+}
+
+.pixel_art_customer_second {
+  image-rendering: pixelated;
+  position: absolute;
+  top: 25.5vw;
+  left: 2.5vw;
+  width: 4.4vw;
+}
+
+.enter_sign {
+  cursor: pointer;
+
+  image-rendering: pixelated;
+  position: absolute;
+  top: 20.5vw;
+  left: 11.5vw;
+  width: 7vw;
+}
+
+/* .enter_store {
+      animation: enter_store_kf 3s ease-in-out;
+  }
+  
+  @keyframes enter_store_kf {
+      0% {
+          transform: translate(0, 34vw);
+      }
+  
+      100% {
+          transform: translate(25vw,34vw);
+      }
+  } */
+
+.blink {
+  animation: blink_kf 4s linear infinite both;
+  pointer-events: none;
+}
+
+@keyframes blink_kf {
+  0% {
+    opacity: 100%;
+  }
+
+  2% {
+    opacity: 10%;
+  }
+
+  4% {
+    opacity: 100%;
+  }
+
+  48% {
+    opacity: 100%;
+  }
+
+  50% {
+    opacity: 5%;
+  }
+
+  51% {
+    opacity: 95%;
+  }
+
+  93% {
+    opacity: 100%;
+  }
+
+  95% {
+    opacity: 0%;
+  }
+
+  96% {
+    opacity: 100%;
+  }
+}
+
+.hide {
+  display: none;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+#customer_selection_popup::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+#customer_selection_popup {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}

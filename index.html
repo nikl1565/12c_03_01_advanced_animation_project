@@ -6,13 +6,92 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>12c.03.01 - Advanced Animation project</title>
     <link rel="stylesheet" href="css/normalize.css" />
-    <link rel="stylesheet" href="global.css" />
+    <link rel="stylesheet" href="css/global.css" />
     <link rel="stylesheet" href="css/index.css" />
     <script src="js/index.js" type="module"></script>
   </head>
   <body>
-    <h1>Index.html</h1>
-    <a href="configurator.html" class="buttons config_b">CLICK TO ENTER</a>
-    <a href="history.html" class="buttons history_b">SNES' HISTORY</a>
+    <div id="pixel_art_container">
+      <img class="pixel_art pixel_art_background" src="images/indexImages/arcade_building_background.png" alt="" />
+      <img class="pixel_art" src="images/indexImages/arcade_building.png" alt="" />
+      <img class="pixel_art blink" src="images/indexImages/arcade_building_light.png" alt="" />
+      <div id="arcade_customer_container">
+        <img class="pixel_art_customer hide" src="images/indexImages/customer_one.png" alt="" />
+        <img class="pixel_art_customer_second hide" src="images/indexImages/customer_two.png" alt="" />
+      </div>
+      <img class="pixel_art" src="images/indexImages/arcade_building_cover.png" alt="" />
+      <img class="pixel_art open_door" src="images/indexImages/arcade_building_door.png" alt="" />
+      <img class="pixel_art" src="images/indexImages/arcade_building_crease.png" alt="" />
+      <img class="enter_sign" src="images/indexImages/arcade_building_entersign.png" alt="" />
+      <img class="enter_sign blink" src="images/indexImages/enter_sign_vfx.png" alt="" />
+    </div>
+
+    <article class="modal">
+      <div id="customer_selection_popup">
+        <h2>- Choose your customer -</h2>
+        <div id="customer_selection">
+          <div class="customer_selection_card" data-customer="first">
+            <div class="no_pointer_events">
+              <div class="customer_img_container">
+                <img class="pixel_art_selection" src="images/indexImages/customer_one.png" alt="" />
+              </div>
+              <h3>RASMUS</h3>
+              <div class="stats">
+                <h3>STATS</h3>
+                <p>HTML: 10</p>
+                <p>CSS: 10</p>
+                <p>JS: 10</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="customer_selection_card" data-customer="second">
+            <div class="no_pointer_events">
+              <div class="customer_img_container">
+                <img class="pixel_art_selection" src="images/indexImages/customer_two.png" alt="" />
+              </div>
+              <h3>JEAN</h3>
+              <div class="stats">
+                <h3>STATS</h3>
+                <p>HTML: 10</p>
+                <p>CSS: 10</p>
+                <p>JS: 10</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="customer_selection_card" data-customer="first">
+            <div class="no_pointer_events">
+              <div class="customer_img_container">
+                <img class="pixel_art_selection" src="images/indexImages/customer_one.png" alt="" />
+              </div>
+              <h3>RASMUS</h3>
+              <div class="stats">
+                <h3>STATS</h3>
+                <p>HTML: 10</p>
+                <p>CSS: 10</p>
+                <p>JS: 10</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="customer_selection_card" data-customer="second">
+            <div class="no_pointer_events">
+              <div class="customer_img_container">
+                <img class="pixel_art_selection" src="images/indexImages/customer_two.png" alt="" />
+              </div>
+              <h3>JEAN</h3>
+              <div class="stats">
+                <h3>STATS</h3>
+                <p>HTML: 10</p>
+                <p>CSS: 10</p>
+                <p>JS: 10</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
   </body>
+  <script type="module" src="js/storecontroller.js"></script>
 </html>

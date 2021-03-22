@@ -33,6 +33,7 @@ h2 {
 p {
   margin: 0;
   color: #f0f0f0;
+  font-size: 3vw;
 }
 
 .character {
@@ -146,6 +147,10 @@ p {
 /* #timelineHistory {
 } */
 
+.timelineTop h2 {
+  opacity: 0;
+}
+
 #SVGTimeline svg {
   stroke: #f0f0f0;
   stroke-width: 0.4;
@@ -174,9 +179,14 @@ p {
   fill: #f0f0f0;
 }
 
+#SVGTimeline .historyImages image {
+  opacity: 0;
+}
+
 #SVGTimeline .imageText text {
   fill: #f0f0f0;
   font-size: 3px;
   stroke-width: 0.1;
   font-family: courierprime;
+  opacity: 0;
 }
