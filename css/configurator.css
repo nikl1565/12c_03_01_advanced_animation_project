@@ -38,8 +38,6 @@ img {
     height: auto;
 }
 
-/* Objects */
-
 .o-container {
     max-width: var(--max-width);
     margin-left: auto;
@@ -48,17 +46,15 @@ img {
     padding-right: var(--gutter);
 }
 
-/***** 
-*
-*  Components
-*
-*****/
-
 .c-site-content {
     margin: var(--gutter) 0;
 }
 
-/* Configurator */
+/***** 
+*
+*  Configurator
+*
+*****/
 
 /* TV */
 
@@ -77,6 +73,7 @@ img {
     border-radius: var(--tv-curve);
     padding: var(--tv-size);
     margin-bottom: var(--tv-size);
+    position: relative;
 }
 
 .c-tv__button-group {
@@ -122,7 +119,8 @@ img {
 }
 
 .c-remote__button {
-    max-width: 38px;
+    width: 38px;
+    height: 38px;
 }
 
 .c-remote__option-title {
@@ -130,6 +128,81 @@ img {
     font-family: sans-serif;
     font-weight: normal;
     margin-bottom: 1rem;
+}
+
+.c-option-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    list-style: none;
+    gap: 0.75rem;
+}
+
+.c-color {
+    width: 31px;
+    height: 31px;
+    border-radius: 50%;
+    transition: transform ease-in-out 0.3s;
+    background-color: var(--color);
+    cursor: pointer;
+}
+
+.c-color.is-active {
+    transform: scale(1.125);
+}
+
+.c-sticker-option {
+    height: 31px;
+    width: 31px;
+    cursor: pointer;
+    background-color: var(--white);
+    border-radius: 50%;
+    padding: 0.25rem;
+}
+
+.c-sticker {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 30px;
+}
+
+.c-sticker.is-active > .c-sticker__options {
+    display: flex;
+}
+
+.c-sticker__options {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    pointer-events: none;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 1rem;
+    min-width: 160px;
+    display: none;
+}
+
+.c-sticker__option-icon {
+    stroke: #fff;
+    cursor: pointer;
+    pointer-events: visible;
+}
+
+.c-sticker__option-icon--resize {
+    cursor: nwse-resize;
+}
+
+.c-sticker__option-icon--duplicate {
+    cursor: copy;
+}
+
+.c-sticker__image {
+    display: inline-block;
+    vertical-align: middle;
+    margin-bottom: 1.8rem;
 }
 
 @media (min-width: 1000px) {
@@ -172,4 +245,29 @@ img {
 
 .snes__shadow {
     pointer-events: none;
+}
+
+.animate-color-in {
+    /* TODO: Create animation for adding a feature */
+    --diffX: 0;
+    --diffY: 0;
+    position: absolute;
+    animation: animate-color-in_kf 1s ease-in-out;
+}
+
+@keyframes animate-color-in_kf {
+    0% {
+        transform: translate(0px, 0px);
+    }
+
+    100% {
+        transform: translate(calc(var(--diffX) * 1px), calc(var(--diffY) * 1px));
+    }
+}
+
+/* TEST */
+
+#star {
+    height: 48px;
+    width: 48px;
 }
