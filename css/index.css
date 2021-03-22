@@ -1,21 +1,33 @@
+nav {
+  display: flex;
+  justify-content: center;
+}
+
+nav svg {
+  width: 25vh;
+  padding-top: 35px;
+}
+
+.buttons_nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
 .buttons {
+  width: 250px;
   text-decoration: none;
+  text-transform: uppercase;
   font-family: pixelmix;
   border-radius: 5px;
   background-color: #ded9c3;
-  color: white;
+  color: #1e1c1d;
   padding: 14px 25px;
   text-align: center;
   display: inline-block;
   margin: 10px;
-}
-
-.config_b {
-  width: 690px;
-}
-
-.history_b {
-  width: 430px;
 }
 
 body {
