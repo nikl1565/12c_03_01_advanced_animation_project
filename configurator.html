@@ -12,6 +12,7 @@
 </head>
 <body>
     <header class="c-site-header"></header>
+    </header>
 
     <main class="c-site-content">
         <div class="o-container">
@@ -45,11 +46,11 @@
                 </div>
                 <div class="c-remote__option-group">
                     <h2 class="c-remote__option-title">Text</h2>
-                    <ul class="c-option-list"></ul>
+                    <ul class="c-option-list" data-option="text"></ul>
                 </div>
                 <div class="c-remote__option-group">
                     <h2 class="c-remote__option-title">Games</h2>
-                    <ul class="c-option-list"></ul>
+                    <ul class="c-option-list" data-option="games"></ul>
                 </div>
                 </div>
             </article>
@@ -65,8 +66,14 @@
    </template>
 
 <template class="t-sticker-option">
-    <li class="c-sticker-option">
-        <img src="#" alt="" class="c-sticker-option__image">
+    <li class="c-option c-option--sticker">
+        <img src="#" alt="" class="c-option__image c-option__image--sticker">
+    </li>
+</template>
+
+<template class="t-game-option">
+    <li class="c-option c-option--game">
+        <img src="#" alt="" class="c-option__image c-option__image--game">
     </li>
 </template>
 

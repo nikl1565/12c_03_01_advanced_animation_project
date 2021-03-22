@@ -1,62 +1,49 @@
-export function stickers() {
-    const settings = {
-        templates: {
-            sticker: document.querySelector(".t-sticker").content,
-            stickerOption: document.querySelector(".t-sticker-option").content,
-        },
-        stickers: ["bowser", "luigi", "mario", "star", "toad"],
-        stickerId: 1,
-    };
-
-    // TODO: Refactor
-    document.querySelector(".c-tv__screen").addEventListener("click", unselect);
+export function games() {
+    console.log("Games component is loaded...");
 
     settings.stickers.forEach((sticker) => {
-        makeStickerOption(sticker, settings.templates.stickerOption);
+        makeGameOption(sticker, settings.templates.gameOption);
     });
+}
 
-    function makeStickerOption(sticker, template) {
-        const clone = template.cloneNode(true);
-        const stickerOptionList = document.querySelector("[data-option=stickers]");
+const settings = {
+    templates: {
+        game: document.querySelector(".t-sticker").content,
+        gameOption: document.querySelector(".t-game-option").content,
+    },
+    stickers: ["super-mario-world", "mega-man-7", "maximum-carnage", "killer-instinct", "dracula-x"],
+};
 
-        // Add image
-        clone.querySelector(".c-option__image--sticker").src = `images/stickers/png/${sticker}.png`;
-        // Add sticker to page on click
+function makeGameOption(sticker, template) {
+    const clone = template.cloneNode(true);
+    const gameOptionList = document.querySelector("[data-option=games]");
 
-        clone.querySelector(".c-option--sticker").addEventListener("click", addSticker);
+    // Add image
+    clone.querySelector(".c-option__image").src = `images/cartridges/${sticker}.png`;
+    // Add sticker to page on click
 
-        // Show sticker option
-        stickerOptionList.append(clone);
+    clone.querySelector(".c-option--game").addEventListener("click", addSticker);
 
-        function addSticker() {
-            console.log("add sticker", sticker);
+    // Show sticker option
+    gameOptionList.append(clone);
 
-            const screen = document.querySelector("[data-js-hook=screen]");
+    function addSticker() {
+        console.log("add sticker", sticker);
 
-            const clone = settings.templates.sticker.cloneNode(true);
-            clone.querySelector(".c-sticker__image").src = `images/stickers/png/${sticker}.png`;
-            clone.querySelector(".c-sticker").setAttribute("data-sticker-id", settings.stickerId);
-            clone.querySelector(".c-sticker").setAttribute("data-sticker-type", sticker);
+        const screen = document.querySelector("[data-js-hook=screen]");
 
-            screen.append(clone);
+        const clone = settings.templates.gameOption.cloneNode(true);
+        console.log(clone);
+        clone.querySelector(".c-option__image").src = `images/stickers/png/${sticker}.png`;
+        clone.querySelector(".c-option").setAttribute("data-game-id", settings.stickerId);
+        clone.querySelector(".c-option").setAttribute("data-game-type", sticker);
 
-            makeEditable(settings);
+        screen.append(clone);
 
-            settings.stickerId++;
-        }
+        makeEditable(settings);
+
+        settings.stickerId++;
     }
-
-    function unselect(event) {
-        const clicked = event.target;
-        console.log(clicked);
-
-        if (clicked.classList.contains("c-tv__screen") || clicked.classList.contains("snes")) {
-            const activeSticker = document.querySelector(".c-sticker.is-active");
-            activeSticker.classList.remove("is-active");
-        }
-    }
-
-    console.log("Stickers component is loaded...");
 }
 
 function makeEditable(settings) {

@@ -127,7 +127,7 @@ img {
     color: var(--white);
     font-family: sans-serif;
     font-weight: normal;
-    margin-bottom: 1rem;
+    margin-bottom: 0.25rem;
 }
 
 .c-option-list {
@@ -158,6 +158,14 @@ img {
     background-color: var(--white);
     border-radius: 50%;
     padding: 0.25rem;
+}
+
+.c-option {
+    height: 31px;
+    width: 31px;
+    border-radius: 50%;
+    padding: 0.25rem;
+    background-color: var(--white);
 }
 
 .c-sticker {
@@ -263,11 +271,4 @@ img {
     100% {
         transform: translate(calc(var(--diffX) * 1px), calc(var(--diffY) * 1px));
     }
-}
-
-/* TEST */
-
-#star {
-    height: 48px;
-    width: 48px;
 }
