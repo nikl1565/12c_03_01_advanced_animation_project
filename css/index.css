@@ -1,3 +1,23 @@
+.buttons {
+  text-decoration: none;
+  font-family: pixelmix;
+  border-radius: 5px;
+  background-color: #ded9c3;
+  color: white;
+  padding: 14px 25px;
+  text-align: center;
+  display: inline-block;
+  margin: 10px;
+}
+
+.config_b {
+  width: 690px;
+}
+
+.history_b {
+  width: 430px;
+}
+
 body {
   background-color: #1e1c1d;
 }
