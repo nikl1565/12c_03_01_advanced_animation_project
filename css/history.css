@@ -8,6 +8,7 @@ nav {
   background-color: #ce3333;
   display: flex;
   justify-content: center;
+  height: 10vh;
 }
 
 nav svg {
@@ -65,6 +66,91 @@ p {
   animation-duration: 1.5s;
 }
 
+.aboutBottom {
+  padding: 50px;
+  height: 60vh;
+  position: relative;
+  overflow-y: scroll;
+}
+
+.aboutBottom p {
+  animation: bottomFadeIn;
+  animation-duration: 0.7s;
+}
+
+@keyframes bottomFadeIn {
+  0% {
+    animation-timing-function: ease-out;
+    transform: translateY(1vh);
+    opacity: 0;
+  }
+  100% {
+    animation-timing-function: ease-in;
+    transform: translateY(0vh);
+    opacity: 1;
+  }
+}
+
+#downArrow {
+  opacity: 1;
+  stroke: #ce3333;
+  stroke-width: 7;
+  fill: none;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  margin-left: -50px;
+  animation: fadeColor;
+  animation-duration: 0.7s;
+}
+
+#SVGTimeline svg {
+  stroke: #f0f0f0;
+  stroke-width: 0.4;
+}
+
+#SVGTimeline .circles {
+  stroke: none;
+  fill: #f0f0f0;
+}
+
+#SVGTimeline .startAndFinishText {
+  font-family: courierprime;
+  stroke: none;
+  fill: #f0f0f0;
+  font-size: 5px;
+}
+
+#SVGTimeline .dates {
+  font-family: courierprime;
+  stroke: none;
+  fill: #f0f0f0;
+  font-size: 5px;
+}
+
+#SVGTimeline .imageText text {
+  fill: #f0f0f0;
+  font-size: 3px;
+  stroke-width: 0.1;
+  font-family: courierprime;
+}
+
+#above800px {
+  display: none;
+}
+
+#textSVGBox {
+  width: 70%;
+  margin: auto;
+  padding-bottom: 30px;
+}
+
+#textSVGBox rect {
+  opacity: 0;
+}
+
+/* @Keyframes */
+
 @keyframes click {
   0% {
     animation-timing-function: ease-in;
@@ -106,84 +192,13 @@ p {
   }
 }
 
-.aboutBottom {
-  padding: 50px;
-  height: 60vh;
-  position: relative;
-}
-
-.aboutBottom p {
-  animation: bottomFadeIn;
-  animation-duration: 0.7s;
-}
-
-@keyframes bottomFadeIn {
+@keyframes fadeColor {
   0% {
-    animation-timing-function: ease-out;
-    transform: translateY(1vh);
-    opacity: 0;
+    stroke: #1e1c1d;
   }
   100% {
-    animation-timing-function: ease-in;
-    transform: translateY(0vh);
-    opacity: 1;
+    stroke: #ce3333;
   }
-}
-
-#downArrow {
-  stroke: #ce3333;
-  stroke-width: 7;
-  fill: none;
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  margin-left: -50px;
-  animation: bottomFadeIn;
-  animation-duration: 0.7s;
-}
-
-/* timeline History styling */
-
-/* #timelineHistory {
-} */
-
-.timelineTop h2 {
-  opacity: 0;
-}
-
-#SVGTimeline svg {
-  stroke: #f0f0f0;
-  stroke-width: 0.4;
-}
-
-#SVGTimeline .circles {
-  stroke: none;
-  fill: #f0f0f0;
-}
-
-#SVGTimeline .startAndFinishText {
-  font-family: courierprime;
-  stroke: none;
-  fill: #f0f0f0;
-  font-size: 5px;
-}
-
-#SVGTimeline .dates {
-  font-family: courierprime;
-  stroke: none;
-  fill: #f0f0f0;
-  font-size: 5px;
-}
-
-#SVGTimeline .imageText text {
-  fill: #f0f0f0;
-  font-size: 3px;
-  stroke-width: 0.1;
-  font-family: courierprime;
-}
-
-#above800px {
-  display: none;
 }
 
 /* MEDIA QUARRY*/
@@ -192,6 +207,7 @@ p {
   #below800px {
     display: none;
   }
+
   #above800px {
     display: flex;
   }
@@ -199,7 +215,7 @@ p {
   p {
     margin: 0;
     color: #f0f0f0;
-    font-size: 2vw;
+    font-size: 1.8vw;
     margin-top: 25px;
     margin-left: 100px;
     margin-right: 100px;
@@ -237,7 +253,5 @@ p {
     font-size: 1px;
     stroke-width: 0.02;
     font-family: courierprime;
-  }
-  #SVGTimeline svg {
   }
 }
