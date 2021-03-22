@@ -31,12 +31,17 @@ const rotateAnimChosenSpawnKeys = [
   { offset: 1, transform: "translateY(0) rotateY(1440deg) scale(1,1)" },
 ];
 
+const pixalArtLength = document.querySelector(".pixel_art_background").getBoundingClientRect().width;
+const pixalArtHeight = document.querySelector(".pixel_art_background").getBoundingClientRect().height;
+console.log(pixalArtLength * 0.2);
+console.log(pixalArtHeight);
+
 const enterAnimProps = { duration: 3800, easing: "linear", fill: "forwards" };
 const enterAnimKeys = [
-  { offset: 0, transform: "translate(0vw,0vw)" },
-  { offset: 0.4, transform: "translate(5.5vw,3vw)" },
-  { offset: 0.75, transform: "translate(10vw,0vw)" },
-  { offset: 1, transform: "translate(15vw,1vw)" },
+  { offset: 0, transform: `translate(0vw,0vw)` },
+  { offset: 0.4, transform: `translate(${pixalArtLength * 0.11}px,${pixalArtHeight * 0.05}px)` },
+  { offset: 0.75, transform: `translate(${pixalArtLength * 0.21}px,0px)` },
+  { offset: 1, transform: `translate(${pixalArtLength * 0.3}px,0px)` },
 ];
 const exitAnimKeys = [
   { offset: 0, transform: "translate(15vw,1vw) scaleX(-1)" },
@@ -62,6 +67,19 @@ function rotateChosen(customer) {
 }
 
 function enterAnim(customer) {
+  const pixalArtLength = document.querySelector(".pixel_art_background").getBoundingClientRect().width;
+  const pixalArtHeight = document.querySelector(".pixel_art_background").getBoundingClientRect().height;
+  console.log(pixalArtLength * 0.2);
+  console.log(pixalArtHeight);
+
+  const enterAnimProps = { duration: 3800, easing: "linear", fill: "forwards" };
+  const enterAnimKeys = [
+    { offset: 0, transform: `translate(0vw,0vw)` },
+    { offset: 0.4, transform: `translate(${pixalArtLength * 0.11}px,${pixalArtHeight * 0.05}px)` },
+    { offset: 0.75, transform: `translate(${pixalArtLength * 0.21}px,0px)` },
+    { offset: 1, transform: `translate(${pixalArtLength * 0.3}px,0px)` },
+  ];
+
   customer.animate(enterAnimKeys, enterAnimProps);
   document.querySelector(".open_door").animate(openDoorAnimKeys, openDoorAnimProps);
   setTimeout(() => {

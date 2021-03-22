@@ -22,6 +22,22 @@ body {
   background-color: #1e1c1d;
 }
 
+h2 {
+  text-shadow: 1px 1px 2px #1e1c1d;
+  font-size: 2em;
+  font-weight: 300;
+  font-family: "pixellari";
+  background-color: #ce3333;
+}
+
+h3 {
+  text-shadow: 1px 1px 2px #1e1c1d;
+  font-size: 1.5em;
+  font-weight: 300;
+  font-family: "pixellari";
+  background-color: #ce3333;
+}
+
 .modal {
   position: fixed;
   top: 0;
@@ -53,7 +69,11 @@ body {
 
 .stats {
   text-align: left;
-  margin-left: 25px;
+}
+
+.stats h3,
+.stats p {
+  padding-left: 15px;
 }
 
 .no_pointer_events {
@@ -84,7 +104,8 @@ body {
 .customer_img_container {
   pointer-events: none;
 
-  background-color: rgba(165, 200, 245, 0.25);
+  background: linear-gradient(0deg, rgba(206, 51, 51, 0.5) 0%, rgba(30, 28, 29, 0.5) 100%);
+  box-shadow: 0px 2px 5px rgb(106, 26, 26);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -95,6 +116,7 @@ body {
 #pixel_art_container {
   position: relative;
   margin-left: 25vw;
+  height: 50vw;
 }
 
 .pixel_art {
@@ -129,20 +151,6 @@ body {
   left: 11.5vw;
   width: 7vw;
 }
-
-/* .enter_store {
-      animation: enter_store_kf 3s ease-in-out;
-  }
-  
-  @keyframes enter_store_kf {
-      0% {
-          transform: translate(0, 34vw);
-      }
-  
-      100% {
-          transform: translate(25vw,34vw);
-      }
-  } */
 
 .blink {
   animation: blink_kf 4s linear infinite both;
@@ -200,4 +208,33 @@ body {
 #customer_selection_popup {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
+}
+
+@media (max-width: 600px) {
+  #pixel_art_container {
+    margin-left: 10vw;
+    height: 80vw;
+  }
+
+  .pixel_art {
+    width: 80vw;
+  }
+
+  .pixel_art_customer {
+    top: 40vw;
+    left: 4vw;
+    width: 8.5vw;
+  }
+
+  .pixel_art_customer_second {
+    top: 41vw;
+    left: 3.2vw;
+    width: 7.2vw;
+  }
+
+  .enter_sign {
+    top: 31vw;
+    left: 18.7vw;
+    width: 12.6vw;
+  }
 }
