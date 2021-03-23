@@ -5,12 +5,11 @@ window.addEventListener("DOMContentLoaded", init);
 
 
 function init() {
+    
     console.log("Dom loaded")
     
     pageLoadAnimations();
     loadGSAP();
-
-    
 }
 
 function pageLoadAnimations() {
@@ -46,7 +45,9 @@ function pageLoadAnimations() {
 }
 
 function loadGSAP() {
+
     console.log("loadGSAP");
+
     gsap.registerPlugin(ScrollTrigger);
     
     setTimeout(function(){
