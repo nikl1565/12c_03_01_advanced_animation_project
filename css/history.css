@@ -16,9 +16,6 @@ nav svg {
   padding-top: 35px;
 }
 
-/* #aboutHistory span {
-} */
-
 h1 {
   display: none;
 }
@@ -149,6 +146,46 @@ p {
   opacity: 0;
 }
 
+/* Footer styling */
+
+footer {
+  height: 30vh;
+  background-color: #ce3333;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  position: relative;
+  padding-top: 2vh;
+}
+
+footer h2 {
+  color: #1e1c1d;
+  font-size: 5vw;
+  margin: 0;
+  padding: 0;
+}
+
+footer p {
+  color: #1e1c1d;
+  font-size: 4vw;
+  margin: 0;
+  padding: 0;
+}
+
+footer h4 {
+  color: #1e1c1d;
+  font-family: pixellari;
+  margin-bottom: 0;
+}
+
+footer ul {
+  font-family: courierprime;
+  color: #1e1c1d;
+  padding: 0;
+  margin-left: -30px;
+}
+
 /* @Keyframes */
 
 @keyframes click {
@@ -253,5 +290,19 @@ p {
     font-size: 1px;
     stroke-width: 0.02;
     font-family: courierprime;
+  }
+
+  footer h2 {
+    color: #1e1c1d;
+    font-size: 2vw;
+    margin: 0;
+    padding: 0;
+  }
+
+  footer p {
+    color: #1e1c1d;
+    font-size: 1.5vw;
+    margin: 0;
+    padding: 0;
   }
 }
