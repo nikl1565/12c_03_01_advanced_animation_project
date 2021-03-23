@@ -132,7 +132,7 @@ function loadGSAP() {
 
         textPixelPath.forEach( function(pixel, index){
                 gsap.to(pixel, {duration: 0.7, y: 30, opacity: 1, immediateRender: false, delay: index*0.0233, ease: "none", scrollTrigger:
-                {start: "top 95%",end: "top 70%", trigger: trigger, // use 1 : 0.033 ratio
+                {start: "top 40%", trigger: trigger, // use 1 : 0.033 ratio
             }});
         });
     });
