@@ -243,13 +243,19 @@ h3 {
     width: 80vw;
   }
 
-  .pixel_art_customer {
+  .pixel_art_customer_first {
     top: 40vw;
     left: 4vw;
     width: 8.5vw;
   }
 
   .pixel_art_customer_second {
+    top: 41vw;
+    left: 3.2vw;
+    width: 7.2vw;
+  }
+
+  .pixel_art_customer_third {
     top: 41vw;
     left: 3.2vw;
     width: 7.2vw;
