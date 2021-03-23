@@ -123,11 +123,10 @@ function loadGSAP() {
 
     const letterGroups = document.querySelectorAll("#textSVGBox g g");
 
-    const textPixelPath = document.querySelectorAll("#textSVGBox rect");
-
     const trigger = document.querySelector("#timelineHistory");
 
     letterGroups.forEach(function(letter){
+
         const textPixelPath = letter.querySelectorAll("rect");
 
         textPixelPath.forEach( function(pixel, index){
