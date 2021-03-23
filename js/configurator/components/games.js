@@ -1,154 +1,80 @@
+const settings = {
+    templates: {
+        game: document.querySelector(".t-game").content,
+        gameOption: document.querySelector(".t-game-option").content,
+    },
+    games: ["super-mario-world", "mega-man-7", "maximum-carnage", "killer-instinct", "dracula-x"],
+};
+
 export function games() {
     console.log("Games component is loaded...");
 
-    settings.stickers.forEach((sticker) => {
-        makeGameOption(sticker, settings.templates.gameOption);
+    settings.games.forEach((game) => {
+        makeGameOption(game, settings.templates.gameOption);
     });
 }
 
-const settings = {
-    templates: {
-        game: document.querySelector(".t-sticker").content,
-        gameOption: document.querySelector(".t-game-option").content,
-    },
-    stickers: ["super-mario-world", "mega-man-7", "maximum-carnage", "killer-instinct", "dracula-x"],
-};
-
-function makeGameOption(sticker, template) {
+function makeGameOption(game, template) {
     const clone = template.cloneNode(true);
     const gameOptionList = document.querySelector("[data-option=games]");
 
     // Add image
-    clone.querySelector(".c-option__image").src = `images/cartridges/${sticker}.png`;
+    clone.querySelector(".c-option__image").src = `images/cartridges/${game}.png`;
     // Add sticker to page on click
 
-    clone.querySelector(".c-option--game").addEventListener("click", addSticker);
+    clone.querySelector(".c-option--game").addEventListener("click", addGame);
 
     // Show sticker option
     gameOptionList.append(clone);
 
-    function addSticker() {
-        console.log("add sticker", sticker);
+    function addGame() {
+        console.log("add game", game);
 
         const screen = document.querySelector("[data-js-hook=screen]");
 
-        const clone = settings.templates.gameOption.cloneNode(true);
+        const clone = settings.templates.game.cloneNode(true);
         console.log(clone);
-        clone.querySelector(".c-option__image").src = `images/stickers/png/${sticker}.png`;
-        clone.querySelector(".c-option").setAttribute("data-game-id", settings.stickerId);
-        clone.querySelector(".c-option").setAttribute("data-game-type", sticker);
+        clone.querySelector(".c-game__image").src = `images/cartridges/${game}.png`;
 
         screen.append(clone);
 
         makeEditable(settings);
-
-        settings.stickerId++;
     }
 }
 
 function makeEditable(settings) {
     const screen = document.querySelector("[data-js-hook=screen]");
 
-    const sticker = document.querySelector(`.c-sticker[data-sticker-id="${settings.stickerId}"]`);
-    changeActiveSticker(sticker);
-    const rotateButton = sticker.querySelector(`[data-sticker-action="rotate"]`);
-    const resizeButton = sticker.querySelector(`[data-sticker-action="resize"]`);
-    const deleteButton = sticker.querySelector(`[data-sticker-action="delete"]`);
-    const duplicateButton = sticker.querySelector(`[data-sticker-action="duplicate"]`);
+    const game = document.querySelector(".c-game");
 
-    // Rotate
-    const rotate = Draggable.create(sticker, {
-        type: "rotation",
-        allowEventDefault: true,
-    })[0].disable();
+    const snesInsertGame = document.querySelector(".js-snes-insert-game").getBoundingClientRect();
+    console.log(snesInsertGame);
+
+    const update = function () {
+        point;
+    };
 
     // Move
-    const move = Draggable.create(sticker, {
+    const moveSnap = Draggable.create(game, {
         type: "x, y",
-        bounds: document.querySelector("[data-js-hook=screen]"),
-        allowEventDefault: true,
-    })[0].enable();
-
-    TweenLite.set(resizeButton, { top: sticker.offsetWidth - 28, left: sticker.offsetHeight - 28 });
-
-    // Resize
-    const resize = Draggable.create(sticker.querySelector(`[data-sticker-action="resize"]`), {
-        type: "left",
-        bounds: {
-            maxX: 272,
+        bounds: screen,
+        liveSnap: {
+            //snaps to the closest point in the array, but only when it's within 15px (new in GSAP 1.20.0 release):
+            points: [{ x: snesInsertGame.x, y: -snesInsertGame.y }],
+            radius: 100,
         },
-        onPress: function (e) {
-            e.stopPropagation();
-        },
-        onDrag: function (e) {
-            TweenLite.set(sticker.querySelector(`[data-sticker-action="resize"]`), { top: sticker.offsetWidth - 28 });
-            TweenLite.set(this.target.parentNode.parentNode, { width: this.x + 28 });
-        },
-    })[0].disable();
-
-    // Move event
-    sticker.addEventListener("mousedown", function (event) {
-        event.stopPropagation();
-        rotate.disable();
-        resize.disable();
-        changeActiveSticker(sticker);
-        move.enable().startDrag(event);
     });
 
-    // Rotate event
-    rotateButton.addEventListener("mousedown", function (event) {
-        event.stopPropagation();
-        move.disable();
-        resize.disable();
+    console.log(`x: ${snesInsertGame.x} y: ${snesInsertGame.y}`);
 
-        rotate.enable().startDrag(event);
-    });
+    game.style.width = `${snesInsertGame.width + 15}px`;
 
-    // Resize event
-    resizeButton.addEventListener("mousedown", function (event) {
-        event.stopPropagation();
-        move.disable();
-        rotate.disable();
-
-        resize.enable().startDrag(event);
-    });
-
-    // Delete click
-    deleteButton.addEventListener("mousedown", function (event) {
-        event.stopPropagation();
-        move.kill();
-        rotate.kill();
-        resize.kill();
-        sticker.remove();
-    });
-
-    // Duplicate click
-    duplicateButton.addEventListener("mousedown", function (event) {
-        move.disable();
-        rotate.disable();
-        resize.disable();
-
-        duplicateSticker();
-        console.log("duplicate: ", sticker.dataset.stickerType);
-    });
-
-    function duplicateSticker() {
-        const clone = sticker.cloneNode(true);
-        settings.stickerId++;
-        clone.setAttribute("data-sticker-id", settings.stickerId);
-        console.log(clone);
-        screen.append(clone);
-
-        makeEditable(settings);
-    }
-
-    function changeActiveSticker(newActiveSticker) {
-        const activeSticker = document.querySelector(".c-sticker.is-active");
-
-        if (activeSticker) {
-            activeSticker.classList.remove("is-active");
-        }
-
-        newActiveSticker.classList.add("is-active");
-    }
+    // // Move event
+    // game.addEventListener("mousedown", function (event) {
+    //     event.stopPropagation();
+    //     rotate.disable();
+    //     resize.disable();
+    //     changeActiveSticker(sticker);
+    //     move.enable().startDrag(event);
+    // });
 }
