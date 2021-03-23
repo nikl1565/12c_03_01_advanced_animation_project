@@ -48,46 +48,19 @@ function enterStoreAnimation() {
 }
 
 function chooseCustomer(event) {
-  if (event.target.dataset.customer === "first") {
-    rotateChosen(event.target.querySelector(".pixel_art_selection"));
-    setTimeout(() => {
-      closeModal(document.querySelector("#customer_selection_popup"));
-    }, 2000);
-    setTimeout(() => {
-      const chosenCustomer = document.querySelector(".pixel_art_customer_first");
-      sessionStorage.setItem("chosencustomer", "first");
-      customer = chosenCustomer;
-      chosenCustomer.classList.remove("hide");
-      document.querySelector(".modal").classList.add("hide");
-      storeAnimationController(chosenCustomer);
-    }, 3000);
-  } else if (event.target.dataset.customer === "second") {
-    rotateChosen(event.target.querySelector(".pixel_art_selection"));
-    setTimeout(() => {
-      closeModal(document.querySelector("#customer_selection_popup"));
-    }, 2000);
-    setTimeout(() => {
-      const chosenCustomer = document.querySelector(".pixel_art_customer_second");
-      sessionStorage.setItem("chosencustomer", "second");
-      customer = chosenCustomer;
-      chosenCustomer.classList.remove("hide");
-      document.querySelector(".modal").classList.add("hide");
-      storeAnimationController(chosenCustomer);
-    }, 3000);
-  } else if (event.target.dataset.customer === "third") {
-    rotateChosen(event.target.querySelector(".pixel_art_selection"));
-    setTimeout(() => {
-      closeModal(document.querySelector("#customer_selection_popup"));
-    }, 2000);
-    setTimeout(() => {
-      const chosenCustomer = document.querySelector(".pixel_art_customer_third");
-      sessionStorage.setItem("chosencustomer", "third");
-      customer = chosenCustomer;
-      chosenCustomer.classList.remove("hide");
-      document.querySelector(".modal").classList.add("hide");
-      storeAnimationController(chosenCustomer);
-    }, 3000);
-  }
+  const chosenCustomerIndex = event.target.dataset.customer;
+  rotateChosen(event.target.querySelector(".pixel_art_selection"));
+  setTimeout(() => {
+    closeModal(document.querySelector("#customer_selection_popup"));
+  }, 2000);
+  setTimeout(() => {
+    const chosenCustomer = document.querySelector(`.pixel_art_customer_${chosenCustomerIndex}`);
+    sessionStorage.setItem("chosencustomer", `${chosenCustomerIndex}`);
+    customer = chosenCustomer;
+    chosenCustomer.classList.remove("hide");
+    document.querySelector(".modal").classList.add("hide");
+    storeAnimationController(chosenCustomer);
+  }, 3000);
 }
 
 function rotateImg(event) {
