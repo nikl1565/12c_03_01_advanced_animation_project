@@ -160,6 +160,11 @@ img {
     padding: 0.25rem;
 }
 
+.c-option__image--game {
+    max-width: none;
+    width: 100%;
+}
+
 .c-option {
     height: 31px;
     width: 31px;

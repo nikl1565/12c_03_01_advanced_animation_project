@@ -4,6 +4,7 @@ const settings = {
         gameOption: document.querySelector(".t-game-option").content,
     },
     games: ["super-mario-world", "mega-man-7", "maximum-carnage", "killer-instinct", "dracula-x"],
+    gameId: 1,
 };
 
 export function games() {
@@ -12,69 +13,71 @@ export function games() {
     settings.games.forEach((game) => {
         makeGameOption(game, settings.templates.gameOption);
     });
+
+    makeEditable();
 }
 
 function makeGameOption(game, template) {
     const clone = template.cloneNode(true);
     const gameOptionList = document.querySelector("[data-option=games]");
 
+    clone.querySelector(".c-option");
+
     // Add image
     clone.querySelector(".c-option__image").src = `images/cartridges/${game}.png`;
     // Add sticker to page on click
 
-    clone.querySelector(".c-option--game").addEventListener("click", addGame);
+    // clone.querySelector(".c-option--game").addEventListener("mousedown", addGame);
 
     // Show sticker option
     gameOptionList.append(clone);
-
-    function addGame() {
-        console.log("add game", game);
-
-        const screen = document.querySelector("[data-js-hook=screen]");
-
-        const clone = settings.templates.game.cloneNode(true);
-        console.log(clone);
-        clone.querySelector(".c-game__image").src = `images/cartridges/${game}.png`;
-
-        screen.append(clone);
-
-        makeEditable(settings);
-    }
 }
 
-function makeEditable(settings) {
+function makeEditable(game) {
+    const games = document.querySelectorAll(`[data-option=games] .c-option__image`);
+
     const screen = document.querySelector("[data-js-hook=screen]");
-
-    const game = document.querySelector(".c-game");
-
     const snesInsertGame = document.querySelector(".js-snes-insert-game").getBoundingClientRect();
-    console.log(snesInsertGame);
 
-    const update = function () {
-        point;
-    };
+    games.forEach((game) => {
+        console.log(game);
 
-    // Move
-    const moveSnap = Draggable.create(game, {
-        type: "x, y",
-        bounds: screen,
-        liveSnap: {
-            //snaps to the closest point in the array, but only when it's within 15px (new in GSAP 1.20.0 release):
-            points: [{ x: snesInsertGame.x, y: -snesInsertGame.y }],
-            radius: 100,
-        },
+        const gamePosition = game.getBoundingClientRect();
+
+        let updatedGamePosition = game.getBoundingClientRect();
+
+        // Move
+        const moveSnap = Draggable.create(game, {
+            type: "x, y",
+            liveSnap: {
+                points: function (event) {
+                    return {
+                        x: snesInsertGame.x - gamePosition.x, //
+                        y: snesInsertGame.y - gamePosition.y - snesInsertGame.height,
+                    };
+                },
+                radius: 100,
+            },
+            onDrag: function (event) {
+                this.target.style.width = `${snesInsertGame.width}px`;
+
+                updatedGamePosition = game.getBoundingClientRect();
+
+                console.log("--------------------------");
+                console.log("insert: ", snesInsertGame);
+                console.log("gameInit: ", gamePosition);
+                console.log("gameUpdated: ", updatedGamePosition);
+
+                // console.table(snesInsertGame, gamePosition, updatedGamePosition);
+
+                if (updatedGamePosition.top === snesInsertGame.top) {
+                    console.log("SNAP BABY");
+                }
+            },
+        });
     });
 
     console.log(`x: ${snesInsertGame.x} y: ${snesInsertGame.y}`);
 
-    game.style.width = `${snesInsertGame.width + 15}px`;
-
-    // // Move event
-    // game.addEventListener("mousedown", function (event) {
-    //     event.stopPropagation();
-    //     rotate.disable();
-    //     resize.disable();
-    //     changeActiveSticker(sticker);
-    //     move.enable().startDrag(event);
-    // });
+    // game.style.width = `${snesInsertGame.width + 15}px`;
 }
