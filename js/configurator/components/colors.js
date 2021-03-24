@@ -1,116 +1,136 @@
 export function colors() {
-    colorButtons();
-    paintElements();
+  colorButtons();
+  paintElements();
+  hoverElements();
 
-    console.log("Colors component is loaded...");
+  console.log("Colors component is loaded...");
 }
 
 const settings = {
-    pickedColor: "#FFFFFF",
-    colors: [
-        "#FF0000", //
-        "#FF8000",
-        "#FFFF00",
-        "#00FF00",
-        "#00FF80",
-        "#00FFFF",
-        "#0080FF",
-        "#0000FF",
-        "#8000FF",
-        "#FF00FF",
-        "#FF0080",
-        "#FFFFFF",
-    ],
-    templates: {
-        color: document.querySelector(".t-color").content,
-    },
-    hooks: {
-        colorList: document.querySelector("[data-field=colors]"),
-    },
+  pickedColor: "#FFFFFF",
+  colors: [
+    "#FF0000", //
+    "#FF8000",
+    "#FFFF00",
+    "#00FF00",
+    "#00FF80",
+    "#00FFFF",
+    "#0080FF",
+    "#0000FF",
+    "#8000FF",
+    "#FF00FF",
+    "#FF0080",
+    "#FFFFFF",
+  ],
+  templates: {
+    color: document.querySelector(".t-color").content,
+  },
+  hooks: {
+    colorList: document.querySelector("[data-field=colors]"),
+  },
 };
 
 function colorButtons() {
-    showColorButtons();
+  showColorButtons();
 
-    function showColorButtons() {
-        const templateColor = settings.templates.color;
-        settings.colors.forEach((color) => {
-            const clone = templateColor.cloneNode(true);
+  function showColorButtons() {
+    const templateColor = settings.templates.color;
+    settings.colors.forEach((color) => {
+      const clone = templateColor.cloneNode(true);
 
-            clone.querySelector(".c-color").setAttribute("data-color", color);
-            clone.querySelector(".c-color").style.setProperty("--color", color);
+      clone.querySelector(".c-color").setAttribute("data-color", color);
+      clone.querySelector(".c-color").style.setProperty("--color", color);
 
-            // TODO: Highlight pickedColor on load
-            // if (color === settings.pickedColor) {
-            //     clone.querySelector(".c-color-picker__color").classList.add("is-active");
-            // }
+      // TODO: Highlight pickedColor on load
+      // if (color === settings.pickedColor) {
+      //     clone.querySelector(".c-color-picker__color").classList.add("is-active");
+      // }
 
-            clone.querySelector(".c-color").addEventListener("click", changeColor);
+      clone.querySelector(".c-color").addEventListener("click", changeColor);
 
-            settings.hooks.colorList.appendChild(clone);
-        });
-    }
+      settings.hooks.colorList.appendChild(clone);
+    });
+  }
 
-    function changeColor() {
-        const clickedColor = this.dataset.color;
+  function changeColor() {
+    const clickedColor = this.dataset.color;
 
-        // Set picked color
-        settings.pickedColor = clickedColor;
-    }
+    // Set picked color
+    settings.pickedColor = clickedColor;
+  }
 }
 
 function paintElements() {
-    const elementsToPaint = document.querySelectorAll(".snes__part");
+  const elementsToPaint = document.querySelectorAll(".snes__part");
 
-    console.log(elementsToPaint);
+  console.log(elementsToPaint);
 
-    elementsToPaint.forEach((elementToPaint) => {
-        elementToPaint.addEventListener("click", paintElement);
-    });
+  elementsToPaint.forEach((elementToPaint) => {
+    elementToPaint.addEventListener("click", paintElement);
+  });
 
-    function paintElement(event) {
-        const clickedElement = event.target;
+  function paintElement(event) {
+    const clickedElement = event.target;
 
-        // get pickedColor from settings
-        const pickedColor = settings.pickedColor;
-        const pickedColorElement = document.querySelector(`[data-color="${pickedColor}"]`);
-        const pickedColorElementClone = document.querySelector(`[data-color="${pickedColor}"]`).cloneNode(true);
-        console.log(pickedColorElementClone);
+    // get pickedColor from settings
+    const pickedColor = settings.pickedColor;
+    const pickedColorElement = document.querySelector(`[data-color="${pickedColor}"]`);
+    const pickedColorElementClone = document.querySelector(`[data-color="${pickedColor}"]`).cloneNode(true);
+    console.log(pickedColorElementClone);
 
-        console.log(pickedColorElement);
+    console.log(pickedColorElement);
 
-        const start = pickedColorElement.getBoundingClientRect();
-        const end = clickedElement.getBoundingClientRect();
+    const start = pickedColorElement.getBoundingClientRect();
+    const end = clickedElement.getBoundingClientRect();
 
-        const elementHeight = end.height / 2;
-        console.log(elementHeight);
+    const elementHeight = end.height / 2;
+    console.log(elementHeight);
 
-        const elementWidth = end.width / 2;
+    const elementWidth = end.width / 2;
 
-        const diffX = end.x - start.x + elementWidth;
-        console.log(diffX);
-        const diffY = end.y - start.y + elementHeight;
-        console.log(diffY);
+    const diffX = end.x - start.x + elementWidth;
+    console.log(diffX);
+    const diffY = end.y - start.y + elementHeight;
+    console.log(diffY);
 
-        pickedColorElement.style.setProperty("--diffX", diffX);
-        pickedColorElement.style.setProperty("--diffY", diffY);
-        pickedColorElement.classList.add("animate-color-in");
+    pickedColorElement.style.setProperty("--diffX", diffX);
+    pickedColorElement.style.setProperty("--diffY", diffY);
+    pickedColorElement.classList.add("animate-color-in");
 
-        pickedColorElement.addEventListener("animationend", animateColor);
-        // TODO:
-        // document.querySelector(".c-color-picker__color").classList.add("animate-color-scale");
-
-        function animateColor() {
-            pickedColorElement.classList.remove("animate-color-in");
-            pickedColorElement.removeEventListener("animationend", animateColor);
-            clickedElement.style.fill = settings.pickedColor;
-        }
-    }
-
+    pickedColorElement.addEventListener("animationend", animateColor);
     // TODO:
-    // const findLatestClickedColor = document.querySelector(".c-color-picker__color.is-active");
-    // if (findLatestClickedColor) {
-    //     findLatestClickedColor.classList.remove("is-active");
-    // }
-    // clickedColorButton.classList.add("is-active");
+    // document.querySelector(".c-color-picker__color").classList.add("animate-color-scale");
+
+    function animateColor() {
+      pickedColorElement.classList.remove("animate-color-in");
+      pickedColorElement.removeEventListener("animationend", animateColor);
+      clickedElement.style.fill = settings.pickedColor;
+    }
+  }
+
+  // TODO:
+  // const findLatestClickedColor = document.querySelector(".c-color-picker__color.is-active");
+  // if (findLatestClickedColor) {
+  //     findLatestClickedColor.classList.remove("is-active");
+  // }
+  // clickedColorButton.classList.add("is-active");
+}
+
+//Hover effect
+function hoverElements() {
+  const parts = document.querySelectorAll("svg .snes__part");
+
+  parts.forEach((part) => {
+    part.addEventListener("mouseover", () => {
+      part.classList.add("g-to-color_active");
+      console.log("on");
+    });
+  });
+
+  parts.forEach((part) => {
+    part.addEventListener("mouseout", () => {
+      part.classList.remove("g-to-color_active");
+      console.log("removed");
+    });
+  });
 }
