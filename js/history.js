@@ -5,7 +5,7 @@ window.addEventListener("DOMContentLoaded", init);
 
 
 function init() {
-    
+
     console.log("Dom loaded")
     
     pageLoadAnimations();
@@ -136,6 +136,26 @@ function loadGSAP() {
             }});
         });
     });
+
+    gsap.from("footer", {backgroundColor: "#1e1c1d", scrollTrigger:// arrow in section 1
+        {toggleActions: "play pause resume reset", start: "top 100%",end: "top 70%", trigger: "footer", scrub:true,
+    }});
+
+    gsap.from("footer h2", {opacity: 0, x: -50, y: 20, scrollTrigger:// arrow in section 1
+        {toggleActions: "play pause resume reset", start: "top 90%",end: "top 70%", trigger: "footer", scrub:true,
+    }});
+
+    gsap.from("footer p", {opacity: 0, x: 50, y: 20, scrollTrigger:// arrow in section 1
+        {toggleActions: "play pause resume reset", start: "top 90%",end: "top 70%", trigger: "footer", scrub:true,
+    }});
+
+    gsap.from("footer h4", {opacity: 0, x: -50, y: 20, scrollTrigger:// arrow in section 1
+        {toggleActions: "play pause resume reset", start: "top 90%",end: "top 70%", trigger: "footer", scrub:true,
+    }});
+
+    gsap.from("footer li", {opacity: 0, x: 50, y: 20, scrollTrigger:// arrow in section 1
+        {toggleActions: "play pause resume reset", start: "top 90%",end: "top 70%", trigger: "footer", scrub:true,
+    }});
 
 }
 
