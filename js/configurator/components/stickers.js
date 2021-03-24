@@ -20,10 +20,10 @@ export function stickers() {
         const stickerOptionList = document.querySelector("[data-option=stickers]");
 
         // Add image
-        clone.querySelector(".c-sticker-option__image").src = `images/stickers/png/${sticker}.png`;
+        clone.querySelector(".c-option__image--sticker").src = `images/stickers/png/${sticker}.png`;
         // Add sticker to page on click
 
-        clone.querySelector(".c-sticker-option").addEventListener("click", addSticker);
+        clone.querySelector(".c-option--sticker").addEventListener("click", addSticker);
 
         // Show sticker option
         stickerOptionList.append(clone);

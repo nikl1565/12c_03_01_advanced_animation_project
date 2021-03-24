@@ -134,10 +134,10 @@ img {
 }
 
 .c-remote__option-title {
-  color: var(--white);
-  font-family: sans-serif;
-  font-weight: normal;
-  margin-bottom: 1rem;
+    color: var(--white);
+    font-family: sans-serif;
+    font-weight: normal;
+    margin-bottom: 0.25rem;
 }
 
 .c-option-list {
@@ -168,6 +168,19 @@ img {
   background-color: var(--white);
   border-radius: 50%;
   padding: 0.25rem;
+}
+
+.c-option__image--game {
+    max-width: none;
+    width: 100%;
+}
+
+.c-option {
+    height: 31px;
+    width: 31px;
+    border-radius: 50%;
+    padding: 0.25rem;
+    background-color: var(--white);
 }
 
 .c-sticker {
@@ -213,6 +226,10 @@ img {
   display: inline-block;
   vertical-align: middle;
   margin-bottom: 1.8rem;
+}
+
+.c-game {
+    position: absolute;
 }
 
 @media (min-width: 1000px) {
@@ -275,9 +292,3 @@ img {
   }
 }
 
-/* TEST */
-
-#star {
-  height: 48px;
-  width: 48px;
-}

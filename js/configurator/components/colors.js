@@ -1,12 +1,12 @@
 export function colors() {
     colorButtons();
-    colorCar();
+    paintElements();
 
     console.log("Colors component is loaded...");
 }
 
 const settings = {
-    elementToPaint: undefined,
+    pickedColor: "#FFFFFF",
     colors: [
         "#FF0000", //
         "#FF8000",
@@ -40,7 +40,7 @@ function colorButtons() {
             clone.querySelector(".c-color").setAttribute("data-color", color);
             clone.querySelector(".c-color").style.setProperty("--color", color);
 
-            // TODO: Highlight pickedColor
+            // TODO: Highlight pickedColor on load
             // if (color === settings.pickedColor) {
             //     clone.querySelector(".c-color-picker__color").classList.add("is-active");
             // }
@@ -52,76 +52,65 @@ function colorButtons() {
     }
 
     function changeColor() {
-        const clickedColorButton = this;
-        console.log(clickedColorButton.dataset.color);
-        console.log("clicked button", clickedColorButton);
-        const clickedColorButtonInner = clickedColorButton;
+        const clickedColor = this.dataset.color;
 
-        if (settings.elementToPaint === undefined) {
-            console.log("no part chosen");
-        } else {
-            const start = clickedColorButtonInner.getBoundingClientRect();
-            const end = settings.elementToPaint.getBoundingClientRect();
-
-            const elementHeight = end.height / 2;
-            console.log(elementHeight);
-
-            const elementWidth = end.width / 2;
-
-            const diffX = end.x - start.x + elementWidth;
-            console.log(diffX);
-            const diffY = end.y - start.y + elementHeight;
-            console.log(diffY);
-
-            clickedColorButtonInner.style.setProperty("--diffX", diffX);
-            clickedColorButtonInner.style.setProperty("--diffY", diffY);
-            clickedColorButtonInner.classList.add("animate-color-in");
-
-            clickedColorButtonInner.addEventListener("animationend", animateColor);
-            // TODO:
-            // document.querySelector(".c-color-picker__color").classList.add("animate-color-scale");
-
-            function animateColor() {
-                clickedColorButtonInner.classList.remove("animate-color-in");
-                clickedColorButtonInner.removeEventListener("animationend", animateColor);
-                settings.elementToPaint.style.fill = clickedColorButton.dataset.color;
-            }
-        }
-
-        settings.pickedColor = clickedColorButton.dataset.color;
-
-        // TODO:
-        // const findLatestClickedColor = document.querySelector(".c-color-picker__color.is-active");
-        // if (findLatestClickedColor) {
-        //     findLatestClickedColor.classList.remove("is-active");
-        // }
-        // clickedColorButton.classList.add("is-active");
+        // Set picked color
+        settings.pickedColor = clickedColor;
     }
 }
 
-//car coloring
-function colorCar() {
-    const groups = document.querySelectorAll(".snes__part");
-    console.log(groups);
-    groups.forEach((group) => {
-        group.addEventListener("click", storeElement);
-        group.style.fill = "#fff";
+function paintElements() {
+    const elementsToPaint = document.querySelectorAll(".snes__part");
 
-        function storeElement() {
-            groups.forEach((group) => {
-                group.classList.remove("g-to-color_active");
-            });
-            settings.elementToPaint = group;
-            group.classList.add("g-to-color_active");
-            group.addEventListener("click", toggleActive);
+    console.log(elementsToPaint);
 
-            console.log(group);
-        }
-
-        function toggleActive() {
-            group.classList.remove("g-to-color_active");
-            group.removeEventListener("click", toggleActive);
-            elementToPaint = undefined;
-        }
+    elementsToPaint.forEach((elementToPaint) => {
+        elementToPaint.addEventListener("click", paintElement);
     });
+
+    function paintElement(event) {
+        const clickedElement = event.target;
+
+        // get pickedColor from settings
+        const pickedColor = settings.pickedColor;
+        const pickedColorElement = document.querySelector(`[data-color="${pickedColor}"]`);
+        const pickedColorElementClone = document.querySelector(`[data-color="${pickedColor}"]`).cloneNode(true);
+        console.log(pickedColorElementClone);
+
+        console.log(pickedColorElement);
+
+        const start = pickedColorElement.getBoundingClientRect();
+        const end = clickedElement.getBoundingClientRect();
+
+        const elementHeight = end.height / 2;
+        console.log(elementHeight);
+
+        const elementWidth = end.width / 2;
+
+        const diffX = end.x - start.x + elementWidth;
+        console.log(diffX);
+        const diffY = end.y - start.y + elementHeight;
+        console.log(diffY);
+
+        pickedColorElement.style.setProperty("--diffX", diffX);
+        pickedColorElement.style.setProperty("--diffY", diffY);
+        pickedColorElement.classList.add("animate-color-in");
+
+        pickedColorElement.addEventListener("animationend", animateColor);
+        // TODO:
+        // document.querySelector(".c-color-picker__color").classList.add("animate-color-scale");
+
+        function animateColor() {
+            pickedColorElement.classList.remove("animate-color-in");
+            pickedColorElement.removeEventListener("animationend", animateColor);
+            clickedElement.style.fill = settings.pickedColor;
+        }
+    }
+
+    // TODO:
+    // const findLatestClickedColor = document.querySelector(".c-color-picker__color.is-active");
+    // if (findLatestClickedColor) {
+    //     findLatestClickedColor.classList.remove("is-active");
+    // }
+    // clickedColorButton.classList.add("is-active");
 }
