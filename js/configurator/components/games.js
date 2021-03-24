@@ -24,17 +24,17 @@ function makeGameOption(game, template) {
     clone.querySelector(".c-option");
 
     // Add image
-    clone.querySelector(".c-option__image").src = `images/cartridges/${game}.png`;
-    // Add sticker to page on click
-
-    // clone.querySelector(".c-option--game").addEventListener("mousedown", addGame);
+    // clone.querySelector(".c-option__image").src = `images/cartridges/${game}.png`;
+    // TEST:
+    clone.querySelector("img[data-image=top]").src = `images/cartridges/super-mario-world-top.png`;
+    clone.querySelector("img[data-image=bottom]").src = `images/cartridges/super-mario-world-bottom.png`;
 
     // Show sticker option
     gameOptionList.append(clone);
 }
 
-function makeEditable(game) {
-    const games = document.querySelectorAll(`[data-option=games] .c-option__image`);
+function makeEditable() {
+    const games = document.querySelectorAll(`[data-option=games] .c-option__image-container`);
 
     const screen = document.querySelector("[data-js-hook=screen]");
     const snesInsertGame = document.querySelector(".js-snes-insert-game").getBoundingClientRect();
@@ -43,6 +43,7 @@ function makeEditable(game) {
         console.log(game);
 
         const gamePosition = game.getBoundingClientRect();
+        console.log(gamePosition);
 
         let updatedGamePosition = game.getBoundingClientRect();
 
@@ -72,11 +73,32 @@ function makeEditable(game) {
                 let gameY = parseFloat(gameYposition.substring(firstComma + 2, lastComma - 2)).toFixed(2);
                 console.log(gameY, "vs", test);
 
-                if (snesInsertGame.x === updatedGamePosition.x && test === gameY) {
+                if (test === gameY) {
                     console.log("SNAP");
-                    game.style.opacity = "0";
+                    game.querySelector("[data-image=bottom]").style.opacity = "0";
                 } else {
-                    game.style.opacity = "1";
+                    game.querySelector("[data-image=bottom]").style.opacity = "1";
+                }
+            },
+            onDragEnd: function (event) {
+                updatedGamePosition = game.getBoundingClientRect();
+
+                let test = snesInsertGame.y - gamePosition.y - snesInsertGame.height;
+                test = test.toFixed(2);
+
+                const gameYposition = game.style.transform;
+                const firstComma = gameYposition.indexOf(",");
+                const lastComma = gameYposition.lastIndexOf(",");
+                let gameY = parseFloat(gameYposition.substring(firstComma + 2, lastComma - 2)).toFixed(2);
+                console.log(gameY, "vs", test);
+
+                if (gameY !== test) {
+                    TweenLite.to(this.target, {
+                        width: gamePosition.width,
+                        height: gamePosition.height,
+                        y: 0,
+                        x: 0,
+                    });
                 }
             },
         });

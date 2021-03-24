@@ -163,6 +163,15 @@ img {
 .c-option__image--game {
     max-width: none;
     width: 100%;
+    position: absolute;
+    /* top: 0; */
+    /* right: 0; */
+}
+
+.c-option__image-container {
+    position: absolute;
+    height: 100%;
+    width: 100%;
 }
 
 .c-option {
@@ -171,6 +180,7 @@ img {
     border-radius: 50%;
     padding: 0.25rem;
     background-color: var(--white);
+    position: relative;
 }
 
 .c-sticker {
