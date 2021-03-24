@@ -257,6 +257,16 @@ img {
   pointer-events: none;
 }
 
+.g-to-color_active {
+  color: blue;
+  /* stroke: rgb(0, 0, 0);
+  stroke-width: 1px;
+
+  stroke-dasharray: 2000;
+  stroke-dashoffset: 2000;
+  animation: dash_kf 1s linear forwards; */
+}
+
 .animate-color-in {
   /* TODO: Create animation for adding a feature */
   --diffX: 0;
