@@ -21,6 +21,11 @@ body {
   src: url("fonts/pixellari-webfont.woff2");
 }
 
+@font-face {
+  font-family: "pixelmix";
+  src: url("fonts/pixelmix-webfont.woff2");
+}
+
 h1 {
   font-family: "pixellari";
 }

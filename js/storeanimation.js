@@ -31,19 +31,10 @@ const rotateAnimChosenSpawnKeys = [
   { offset: 1, transform: "translateY(0) rotateY(1440deg) scale(1,1)" },
 ];
 
-const enterAnimProps = { duration: 3800, easing: "linear", fill: "forwards" };
-const enterAnimKeys = [
-  { offset: 0, transform: "translate(0vw,0vw)" },
-  { offset: 0.4, transform: "translate(5.5vw,3vw)" },
-  { offset: 0.75, transform: "translate(10vw,0vw)" },
-  { offset: 1, transform: "translate(15vw,1vw)" },
-];
-const exitAnimKeys = [
-  { offset: 0, transform: "translate(15vw,1vw) scaleX(-1)" },
-  { offset: 0.25, transform: "translate(10vw,-0.5vw) scaleX(-1)" },
-  { offset: 0.6, transform: "translate(5.5vw,3vw) scaleX(-1)" },
-  { offset: 1, transform: "translate(0,0) scaleX(-1)" },
-];
+const pixalArtLength = document.querySelector(".pixel_art_background").getBoundingClientRect().width;
+const pixalArtHeight = document.querySelector(".pixel_art_background").getBoundingClientRect().height;
+console.log(pixalArtLength * 0.2);
+console.log(pixalArtHeight);
 
 const openDoorAnimProps = { duration: 5000, easing: "ease-in-out" };
 const openDoorAnimKeys = [
@@ -62,6 +53,19 @@ function rotateChosen(customer) {
 }
 
 function enterAnim(customer) {
+  const pixalArtLength = document.querySelector(".pixel_art_background").getBoundingClientRect().width;
+  const pixalArtHeight = document.querySelector(".pixel_art_background").getBoundingClientRect().height;
+  console.log(pixalArtLength * 0.2);
+  console.log(pixalArtHeight);
+
+  const enterAnimProps = { duration: 3800, easing: "linear", fill: "forwards" };
+  const enterAnimKeys = [
+    { offset: 0, transform: `translate(0vw,0vw)` },
+    { offset: 0.4, transform: `translate(${pixalArtLength * 0.11}px,${pixalArtHeight * 0.05}px)` },
+    { offset: 0.75, transform: `translate(${pixalArtLength * 0.21}px,0px)` },
+    { offset: 1, transform: `translate(${pixalArtLength * 0.3}px,0px)` },
+  ];
+
   customer.animate(enterAnimKeys, enterAnimProps);
   document.querySelector(".open_door").animate(openDoorAnimKeys, openDoorAnimProps);
   setTimeout(() => {
@@ -70,7 +74,15 @@ function enterAnim(customer) {
 }
 
 function exitAnim(customer) {
-  customer.animate(exitAnimKeys, enterAnimProps);
+  const exitAnimProps = { duration: 3800, easing: "linear", fill: "forwards" };
+  const exitAnimKeys = [
+    { offset: 0, transform: `translate(${pixalArtLength * 0.3}px,0px) rotateY(180deg)` },
+    { offset: 0.25, transform: `translate(${pixalArtLength * 0.21}px,0px) rotateY(180deg)` },
+    { offset: 0.6, transform: `translate(${pixalArtLength * 0.11}px,${pixalArtHeight * 0.05}px) rotateY(180deg)` },
+    { offset: 1, transform: `translate(0vw,0vw) rotateY(180deg)` },
+  ];
+  document.querySelector(".open_door").animate(openDoorAnimKeys, openDoorAnimProps);
+  customer.animate(exitAnimKeys, exitAnimProps);
 }
 
 function bouncyAnim(item) {
