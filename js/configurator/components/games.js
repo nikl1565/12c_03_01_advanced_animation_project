@@ -51,6 +51,7 @@ function makeEditable(game) {
             type: "x, y",
             liveSnap: {
                 points: function (event) {
+                    console.log(snesInsertGame.y - gamePosition.y - snesInsertGame.height);
                     return {
                         x: snesInsertGame.x - gamePosition.x, //
                         y: snesInsertGame.y - gamePosition.y - snesInsertGame.height,
@@ -68,9 +69,7 @@ function makeEditable(game) {
                 console.log("gameInit: ", gamePosition);
                 console.log("gameUpdated: ", updatedGamePosition);
 
-                // console.table(snesInsertGame, gamePosition, updatedGamePosition);
-
-                if (updatedGamePosition.top === snesInsertGame.top) {
+                if (updatedGamePosition.y == snesInsertGame.y - gamePosition.y) {
                     console.log("SNAP BABY");
                 }
             },
@@ -78,6 +77,4 @@ function makeEditable(game) {
     });
 
     console.log(`x: ${snesInsertGame.x} y: ${snesInsertGame.y}`);
-
-    // game.style.width = `${snesInsertGame.width + 15}px`;
 }
