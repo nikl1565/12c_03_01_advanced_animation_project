@@ -115,6 +115,10 @@ h3 {
   z-index: 1;
 }
 
+.fourth {
+  max-width: 70%;
+}
+
 .customer_img_container {
   pointer-events: none;
 
@@ -163,6 +167,14 @@ h3 {
   top: 25.5vw;
   left: 2.5vw;
   width: 4.4vw;
+}
+
+.pixel_art_customer_fourth {
+  image-rendering: pixelated;
+  position: absolute;
+  top: 25.5vw;
+  left: 1.8vw;
+  width: 8vw;
 }
 
 .enter_sign {
