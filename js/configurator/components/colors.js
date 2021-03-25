@@ -1,7 +1,6 @@
 export function colors() {
   colorButtons();
   paintElements();
-  hoverElements();
 
   console.log("Colors component is loaded...");
 }
@@ -57,7 +56,7 @@ function colorButtons() {
 
     // Set picked color
     settings.pickedColor = clickedColor;
-
+    hoverElements(clickedColor);
     selectedColor(this);
   }
 
@@ -127,18 +126,20 @@ function paintElements() {
 }
 
 //Hover effect
-function hoverElements() {
+function hoverElements(clickedColor) {
   const parts = document.querySelectorAll("svg .snes__part");
-
+  console.log(clickedColor);
   parts.forEach((part) => {
     part.addEventListener("mouseover", () => {
-      part.classList.add("g-to-color_active");
+      // part.classList.add("g-to-color_active");
+      part.style.fill = clickedColor;
     });
   });
 
   parts.forEach((part) => {
     part.addEventListener("mouseout", () => {
-      part.classList.remove("g-to-color_active");
+      //   part.classList.remove("g-to-color_active");
+      part.style.fill = "#FFFFFF";
     });
   });
 }

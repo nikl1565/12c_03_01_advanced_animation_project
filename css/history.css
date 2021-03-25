@@ -13,7 +13,8 @@ nav {
 
 nav svg {
   width: 25vh;
-  padding-top: 35px;
+  margin-top: 35px;
+  cursor: pointer;
 }
 
 h1 {
@@ -149,7 +150,7 @@ p {
 /* Footer styling */
 
 footer {
-  height: 30vh;
+  min-height: 30vh;
   background-color: #ce3333;
   display: flex;
   flex-direction: column;

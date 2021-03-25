@@ -10,8 +10,11 @@ function init() {
       window.location.href = "game.html";
     }, 1000);
   }
-  console.log("Dom loaded");
 
+  console.log("Dom loaded")
+  document.querySelector("#Layer_1").addEventListener("click", function(){
+    location.href = 'index.html'; // because fucking a tag was being rude
+  });
   pageLoadAnimations();
   loadGSAP();
 }

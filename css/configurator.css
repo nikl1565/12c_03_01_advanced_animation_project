@@ -31,7 +31,9 @@
     --gutter: 3rem;
   }
 }
-
+body {
+  background-color: #1e1c1d;
+}
 nav {
   display: flex;
   justify-content: center;
@@ -133,6 +135,10 @@ img {
   height: 38px;
 }
 
+.c-remote__button:last-child {
+  cursor: pointer;
+}
+
 .c-remote__option-title {
   color: var(--white);
   font-family: sans-serif;
@@ -171,24 +177,24 @@ img {
 }
 
 .c-option__image--game {
-    max-width: none;
-    width: 100%;
-    position: absolute;
+  max-width: none;
+  width: 100%;
+  position: absolute;
 }
 
 .c-option__image-container {
-    position: absolute;
-    height: calc(100% - 0.25rem);
-    width: calc(100% - 0.25rem);
+  position: absolute;
+  height: calc(100% - 0.25rem);
+  width: calc(100% - 0.25rem);
 }
 
 .c-option {
-    height: 31px;
-    width: 31px;
-    border-radius: 50%;
-    padding: 0.25rem;
-    background-color: var(--white);
-    position: relative;
+  height: 31px;
+  width: 31px;
+  border-radius: 50%;
+  padding: 0.25rem;
+  background-color: var(--white);
+  position: relative;
 }
 
 .c-sticker {
