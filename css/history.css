@@ -1,309 +1,314 @@
 body {
-  background-color: #1e1c1d;
+    background-color: #1e1c1d;
 }
 
 /* About styling */
 
 nav {
-  background-color: #ce3333;
-  display: flex;
-  justify-content: center;
-  height: 10vh;
+    background-color: #ce3333;
+    display: flex;
+    justify-content: center;
+    height: 10vh;
 }
 
 nav svg {
-  width: 25vh;
-  margin-top: 35px;
-  cursor: pointer;
+    width: 25vh;
+    margin-top: 35px;
+    cursor: pointer;
 }
 
 h1 {
-  display: none;
+    display: none;
 }
 
 h2 {
-  color: #ce3333;
-  font-size: 7vh;
-  padding: 50px;
-  text-align: center;
-  font-family: pixellari;
+    color: #ce3333;
+    font-size: 7vh;
+    padding: 50px;
+    text-align: center;
+    font-family: pixellari;
 }
 
 p {
-  margin: 0;
-  color: #f0f0f0;
-  font-size: 3vw;
+    margin: 0;
+    color: #f0f0f0;
+    font-size: 3vw;
 }
 
 .character {
-  margin: 0;
-  font-size: 15vh;
-  color: #1e1c1d;
-  align-self: center;
-  font-family: "pixellari";
+    margin: 0;
+    font-size: 15vh;
+    color: #1e1c1d;
+    align-self: center;
+    font-family: "pixellari";
 }
 
 #textDisplay {
-  display: flex;
+    display: flex;
 }
 
 .aboutTop {
-  background-color: #ce3333;
-  display: flex;
-  justify-content: center;
-  height: 30vh;
+    background-color: #ce3333;
+    display: flex;
+    justify-content: center;
+    height: 30vh;
 }
 
 .characterAnimation {
-  animation: click;
-  animation-duration: 1.5s;
+    animation: click;
+    animation-duration: 1.5s;
 }
 
 .secondarycharacterAnimation {
-  animation: bump;
-  animation-duration: 1.5s;
+    animation: bump;
+    animation-duration: 1.5s;
 }
 
 .aboutBottom {
-  padding: 50px;
-  height: 60vh;
-  position: relative;
-  overflow-y: scroll;
+    padding: 50px;
+    height: 60vh;
+    position: relative;
+    overflow-y: auto;
 }
 
 .aboutBottom p {
-  animation: bottomFadeIn;
-  animation-duration: 0.7s;
+    animation: bottomFadeIn;
+    animation-duration: 0.7s;
 }
 
 @keyframes bottomFadeIn {
-  0% {
-    animation-timing-function: ease-out;
-    transform: translateY(1vh);
-    opacity: 0;
-  }
-  100% {
-    animation-timing-function: ease-in;
-    transform: translateY(0vh);
-    opacity: 1;
-  }
+    0% {
+        animation-timing-function: ease-out;
+        transform: translateY(1vh);
+        opacity: 0;
+    }
+    100% {
+        animation-timing-function: ease-in;
+        transform: translateY(0vh);
+        opacity: 1;
+    }
 }
 
 #downArrow {
-  opacity: 1;
-  stroke: #ce3333;
-  stroke-width: 7;
-  fill: none;
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  margin-left: -50px;
-  animation: fadeColor;
-  animation-duration: 0.7s;
+    opacity: 1;
+    stroke: #ce3333;
+    stroke-width: 7;
+    fill: none;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    margin-left: -50px;
+    animation: fadeColor;
+    animation-duration: 0.7s;
 }
 
 #SVGTimeline svg {
-  stroke: #f0f0f0;
-  stroke-width: 0.4;
+    stroke: #f0f0f0;
+    stroke-width: 0.4;
+    width: 100%;
 }
 
 #SVGTimeline .circles {
-  stroke: none;
-  fill: #f0f0f0;
+    stroke: none;
+    fill: #f0f0f0;
 }
 
 #SVGTimeline .startAndFinishText {
-  font-family: courierprime;
-  stroke: none;
-  fill: #f0f0f0;
-  font-size: 5px;
+    font-family: courierprime;
+    stroke: none;
+    fill: #f0f0f0;
+    font-size: 5px;
 }
 
 #SVGTimeline .dates {
-  font-family: courierprime;
-  stroke: none;
-  fill: #f0f0f0;
-  font-size: 5px;
+    font-family: courierprime;
+    stroke: none;
+    fill: #f0f0f0;
+    font-size: 5px;
 }
 
 #SVGTimeline .imageText text {
-  fill: #f0f0f0;
-  font-size: 3px;
-  stroke-width: 0.1;
-  font-family: courierprime;
+    fill: #f0f0f0;
+    font-size: 3px;
+    stroke-width: 0.1;
+    font-family: courierprime;
 }
 
 #above800px {
-  display: none;
+    display: none;
+}
+
+#below800px {
+    display: block;
 }
 
 #textSVGBox {
-  width: 70%;
-  margin: auto;
-  padding-bottom: 30px;
+    width: 70%;
+    margin: auto;
+    padding-bottom: 30px;
 }
 
 #textSVGBox rect {
-  opacity: 0;
+    opacity: 0;
 }
 
 /* Footer styling */
 
 footer {
-  min-height: 30vh;
-  background-color: #ce3333;
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  align-items: center;
-  position: relative;
-  padding-top: 2vh;
+    min-height: 30vh;
+    background-color: #ce3333;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    position: relative;
+    padding-top: 2vh;
 }
 
 footer h2 {
-  color: #1e1c1d;
-  font-size: 5vw;
-  margin: 0;
-  padding: 0;
+    color: #1e1c1d;
+    font-size: 5vw;
+    margin: 0;
+    padding: 0;
 }
 
 footer p {
-  color: #1e1c1d;
-  font-size: 4vw;
-  margin: 0;
-  padding: 0;
+    color: #1e1c1d;
+    font-size: 4vw;
+    margin: 0;
+    padding: 0;
 }
 
 footer h4 {
-  color: #1e1c1d;
-  font-family: pixellari;
-  margin-bottom: 0;
+    color: #1e1c1d;
+    font-family: pixellari;
+    margin-bottom: 0;
 }
 
 footer ul {
-  font-family: courierprime;
-  color: #1e1c1d;
-  padding: 0;
-  margin-left: -30px;
+    font-family: courierprime;
+    color: #1e1c1d;
+    padding: 0;
+    margin-left: -30px;
 }
 
 /* @Keyframes */
 
 @keyframes click {
-  0% {
-    animation-timing-function: ease-in;
-    transform: translateY(-6vh);
-  }
+    0% {
+        animation-timing-function: ease-in;
+        transform: translateY(-6vh);
+    }
 
-  80% {
-    transform: translateY(-7vh);
-  }
+    80% {
+        transform: translateY(-7vh);
+    }
 
-  90% {
-    transform: translateY(0vh);
-  }
+    90% {
+        transform: translateY(0vh);
+    }
 
-  96% {
-    animation-timing-function: ease-out;
-    transform: translateY(1vh);
-  }
+    96% {
+        animation-timing-function: ease-out;
+        transform: translateY(1vh);
+    }
 
-  100% {
-    animation-timing-function: ease-out;
-    transform: translateY(0vh);
-  }
+    100% {
+        animation-timing-function: ease-out;
+        transform: translateY(0vh);
+    }
 }
 
 @keyframes bump {
-  90% {
-    transform: translateY(0vh);
-  }
+    90% {
+        transform: translateY(0vh);
+    }
 
-  96% {
-    animation-timing-function: ease-out;
-    transform: translateY(1vh);
-  }
+    96% {
+        animation-timing-function: ease-out;
+        transform: translateY(1vh);
+    }
 
-  100% {
-    animation-timing-function: ease-out;
-    transform: translateY(0vh);
-  }
+    100% {
+        animation-timing-function: ease-out;
+        transform: translateY(0vh);
+    }
 }
 
 @keyframes fadeColor {
-  0% {
-    stroke: #1e1c1d;
-  }
-  100% {
-    stroke: #ce3333;
-  }
+    0% {
+        stroke: #1e1c1d;
+    }
+    100% {
+        stroke: #ce3333;
+    }
 }
 
 /* MEDIA QUARRY*/
 
 @media (min-width: 800px) {
-  #below800px {
-    display: none;
-  }
+    #below800px {
+        display: none;
+    }
 
-  #above800px {
-    display: flex;
-  }
+    #above800px {
+        display: block;
+    }
 
-  p {
-    margin: 0;
-    color: #f0f0f0;
-    font-size: 1.8vw;
-    margin-top: 25px;
-    margin-left: 100px;
-    margin-right: 100px;
-  }
+    p {
+        margin: 0;
+        color: #f0f0f0;
+        font-size: 1.8vw;
+        margin-top: 25px;
+        margin-left: 100px;
+        margin-right: 100px;
+    }
 
-  #SVGTimeline svg {
-    stroke: #f0f0f0;
-    stroke-width: 0.3;
-  }
+    #SVGTimeline svg {
+        stroke: #f0f0f0;
+        stroke-width: 0.3;
+    }
 
-  #SVGTimeline .lines {
-    stroke: #f0f0f0;
-    stroke-width: 0.2;
-  }
+    #SVGTimeline .lines {
+        stroke: #f0f0f0;
+        stroke-width: 0.2;
+    }
 
-  #SVGTimeline .circles {
-    stroke: none;
-    fill: #f0f0f0;
-  }
+    #SVGTimeline .circles {
+        stroke: none;
+        fill: #f0f0f0;
+    }
 
-  #SVGTimeline .startAndFinishText {
-    stroke: none;
-    fill: #f0f0f0;
-    font-size: 2px;
-  }
+    #SVGTimeline .startAndFinishText {
+        stroke: none;
+        fill: #f0f0f0;
+        font-size: 2px;
+    }
 
-  #SVGTimeline .dates {
-    stroke: none;
-    fill: #f0f0f0;
-    font-size: 2px;
-  }
+    #SVGTimeline .dates {
+        stroke: none;
+        fill: #f0f0f0;
+        font-size: 2px;
+    }
 
-  #SVGTimeline .imageText text {
-    fill: #f0f0f0;
-    font-size: 1px;
-    stroke-width: 0.02;
-    font-family: courierprime;
-  }
+    #SVGTimeline .imageText text {
+        fill: #f0f0f0;
+        font-size: 1px;
+        stroke-width: 0.02;
+        font-family: courierprime;
+    }
 
-  footer h2 {
-    color: #1e1c1d;
-    font-size: 2vw;
-    margin: 0;
-    padding: 0;
-  }
+    footer h2 {
+        color: #1e1c1d;
+        font-size: 2vw;
+        margin: 0;
+        padding: 0;
+    }
 
-  footer p {
-    color: #1e1c1d;
-    font-size: 1.5vw;
-    margin: 0;
-    padding: 0;
-  }
+    footer p {
+        color: #1e1c1d;
+        font-size: 1.5vw;
+        margin: 0;
+        padding: 0;
+    }
 }

@@ -174,10 +174,23 @@ img {
     transition: transform ease-in-out 0.3s;
     background-color: var(--color);
     cursor: pointer;
+    position: relative;
 }
 
 .c-color.is-active {
     transform: scale(1.125);
+}
+
+.c-color__color {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: inherit;
+    position: absolute;
+    border-radius: 50%;
 }
 
 .c-sticker-option {
@@ -327,6 +340,12 @@ img {
     100% {
         transform: translate(calc(var(--diffX) * 1px), calc(var(--diffY) * 1px));
     }
+}
+
+.is-highlighted {
+    -webkit-box-shadow: 0px 0px 65px 25px rgba(212, 175, 55, 1);
+    -moz-box-shadow: 0px 0px 65px 25px rgba(212, 175, 55, 1);
+    box-shadow: 0px 0px 65px 25px rgba(212, 175, 55, 1);
 }
 
 @keyframes buttonPress {
