@@ -52,6 +52,8 @@ function colorButtons() {
         selectedColor(defaultColor);
     }
 
+    hoverElements(settings.pickedColor);
+
     function changeColor() {
         const clickedColor = this.dataset.color;
 
@@ -108,8 +110,6 @@ function paintElements() {
         pickedColorElement.classList.add("animate-color-in");
 
         pickedColorElement.addEventListener("animationend", animateColor);
-        // TODO:
-        // document.querySelector(".c-color-picker__color").classList.add("animate-color-scale");
 
         function animateColor() {
             pickedColorElement.classList.remove("animate-color-in");
@@ -117,13 +117,6 @@ function paintElements() {
             clickedElement.style.fill = settings.pickedColor;
         }
     }
-
-    // TODO:
-    // const findLatestClickedColor = document.querySelector(".c-color-picker__color.is-active");
-    // if (findLatestClickedColor) {
-    //     findLatestClickedColor.classList.remove("is-active");
-    // }
-    // clickedColorButton.classList.add("is-active");
 }
 
 //Hover effect
@@ -132,14 +125,12 @@ function hoverElements(clickedColor) {
     console.log(clickedColor);
     parts.forEach((part) => {
         part.addEventListener("mouseover", () => {
-            // part.classList.add("g-to-color_active");
             part.style.fill = clickedColor;
         });
     });
 
     parts.forEach((part) => {
         part.addEventListener("mouseout", () => {
-            //   part.classList.remove("g-to-color_active");
             part.style.fill = "#FFFFFF";
         });
     });
