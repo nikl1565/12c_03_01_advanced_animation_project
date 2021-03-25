@@ -1,68 +1,68 @@
 const settings = {
-  templates: {
-    game: document.querySelector(".t-game").content,
-    gameOption: document.querySelector(".t-game-option").content,
-  },
-  games: [
-    {
-      gameName: "super-mario-world",
-      category: "games",
+    templates: {
+        game: document.querySelector(".t-game").content,
+        gameOption: document.querySelector(".t-game-option").content,
     },
-    {
-      gameName: "mega-man-7",
-      category: "games",
-    },
-    {
-      gameName: "maximum-carnage",
-      category: "games",
-    },
-    {
-      gameName: "killer-instinct",
-      category: "games",
-    },
-    {
-      gameName: "dracula-x",
-      category: "games",
-    },
-    {
-      gameName: "cursed",
-      category: "lost-games",
-    },
-  ],
-  gameId: 1,
-  gameInserted: null,
+    games: [
+        {
+            gameName: "super-mario-world",
+            category: "games",
+        },
+        {
+            gameName: "mega-man-7",
+            category: "games",
+        },
+        {
+            gameName: "maximum-carnage",
+            category: "games",
+        },
+        {
+            gameName: "killer-instinct",
+            category: "games",
+        },
+        {
+            gameName: "dracula-x",
+            category: "games",
+        },
+        {
+            gameName: "cursed",
+            category: "lost-games",
+        },
+    ],
+    gameId: 1,
+    gameInserted: null,
 };
 
 export function games() {
-  console.log("Games component is loaded...");
+    console.log("Games component is loaded...");
 
-  settings.games.forEach((game) => {
-    makeGameOption(game, settings.templates.gameOption);
-  });
+    settings.games.forEach((game) => {
+        makeGameOption(game, settings.templates.gameOption);
+    });
 
-  makeEditable();
+    makeEditable();
 }
 
 function makeGameOption(game, template) {
-  const clone = template.cloneNode(true);
-  const gameOptionList = document.querySelector(`[data-option=${game.category}]`);
-  console.log(game);
+    const clone = template.cloneNode(true);
+    const gameOptionList = document.querySelector(`[data-option=${game.category}]`);
+    console.log(game);
 
-  // Add images
-  clone.querySelector("img[data-image=top]").src = `images/cartridges/${game.gameName}-top.png`;
-  clone.querySelector("img[data-image=bottom]").src = `images/cartridges/${game.gameName}.png`;
+    // Add images
+    clone.querySelector("img[data-image=top]").src = `images/cartridges/${game.gameName}-top.png`;
+    clone.querySelector("img[data-image=bottom]").src = `images/cartridges/${game.gameName}.png`;
 
-  // Add ID
-  clone.querySelector(".c-option__image-container").setAttribute("data-game-id", settings.gameId);
+    // Add ID
+    clone.querySelector(".c-option__image-container").setAttribute("data-game-id", settings.gameId);
 
-  // Add name
-  clone.querySelector(".c-option__image-container").setAttribute("data-game-name", game.gameName);
+    // Add name
+    clone.querySelector(".c-option__image-container").setAttribute("data-game-name", game.gameName);
 
-  // Count up
-  settings.gameId++;
+    // Count up
+    settings.gameId++;
 
-  // Show sticker option
-  gameOptionList.append(clone);
+    // Show sticker option
+    gameOptionList.append(clone);
 }
 
 function makeEditable() {
@@ -168,9 +168,8 @@ function makeEditable() {
             highlightPart(insertGame);
         });
     });
-  });
 
-  console.log(`x: ${snesInsertGame.x} y: ${snesInsertGame.y}`);
+    console.log(`x: ${snesInsertGame.x} y: ${snesInsertGame.y}`);
 }
 
 function highlightPart(part) {
@@ -180,5 +179,5 @@ function highlightPart(part) {
 }
 
 function startGame() {
-  window.location.href = "game.html";
+    window.location.href = "game.html";
 }
