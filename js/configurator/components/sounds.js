@@ -10,6 +10,9 @@ export function sounds() {
     buttonSelector.addEventListener("click", function(){
         playSound(mySound, buttonSelector);
     });
+    changeVolume(mySound);
+    const buttonList = document.querySelectorAll(".c-remote__button-group img:last-child, .c-remote__button-group .volUp, .c-remote__button-group .volDown")
+    buttonAnimation(buttonList);
 
 }
 
@@ -27,4 +30,42 @@ function playSound(mySound, button) {
         button.src = "images/icons/mute.svg";
     }
 
+}
+
+function changeVolume(mySound) {
+    const volumeUp = document.querySelector(".c-remote__button-group .volUp");
+    const volumeDown = document.querySelector(".c-remote__button-group .volDown");
+
+    volumeUp.addEventListener("click", function(){
+        plus(mySound);
+    });
+    volumeDown.addEventListener("click", function(){
+        minus(mySound);
+    });
+}
+
+function plus(mySound) {   
+    if (mySound.volume < 1) {
+        mySound.volume = (mySound.volume + 0.1).toFixed(1);
+    }
+    console.log("volume " + mySound.volume * 100 + "%");
+}
+
+function minus(mySound) {
+    if (mySound.volume > 0) {
+        mySound.volume = (mySound.volume - 0.1).toFixed(1);
+    }
+    console.log("volume " + mySound.volume * 100 + "%");
+}
+
+function buttonAnimation(buttons) {
+    buttons.forEach( button => {
+        button.addEventListener("click", function(){
+            button.classList.add("buttonClickAnimation");
+            setTimeout(function(){
+                button.classList.remove("buttonClickAnimation");
+            }, 100);
+        })
+        
+    });
 }

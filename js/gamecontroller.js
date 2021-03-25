@@ -10,6 +10,8 @@ const game_content = game_screen.getContext("2d");
 let n = 1;
 
 function init() {
+  //SETS STATE TO CURSED
+  sessionStorage.setItem("cursed", "true");
   const button = document.querySelector("#nextbtn");
   let input = document.querySelector(`.text${n}`).textContent;
   let container = document.querySelector(`.text${n}`);
@@ -72,11 +74,6 @@ function init() {
 function startGame() {
   initializeGame();
   setInterval(update, 10);
-}
-
-function startGameTwo() {
-  initializeGameTwo();
-  setInterval(updateTwo, 10);
 }
 
 //player
@@ -418,6 +415,7 @@ function configReturn() {
   game_screen_two.classList.remove("hide");
   document.querySelector(".game_won").classList.add("hide");
   setInterval(updateTwo, 10); */
+  sessionStorage.setItem("cursed", "false");
   setTimeout(() => {
     window.location.href = "configurator.html";
   }, 2000);
