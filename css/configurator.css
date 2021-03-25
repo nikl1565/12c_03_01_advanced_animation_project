@@ -171,16 +171,24 @@ img {
 }
 
 .c-option__image--game {
-  max-width: none;
-  width: 100%;
+    max-width: none;
+    width: 100%;
+    position: absolute;
+}
+
+.c-option__image-container {
+    position: absolute;
+    height: calc(100% - 0.25rem);
+    width: calc(100% - 0.25rem);
 }
 
 .c-option {
-  height: 31px;
-  width: 31px;
-  border-radius: 50%;
-  padding: 0.25rem;
-  background-color: var(--white);
+    height: 31px;
+    width: 31px;
+    border-radius: 50%;
+    padding: 0.25rem;
+    background-color: var(--white);
+    position: relative;
 }
 
 .c-sticker {
@@ -266,16 +274,11 @@ img {
   cursor: pointer;
 }
 
-/* .snes__part:hover {
-  fill: red;
-} */
-
 .snes__shadow {
   pointer-events: none;
 }
 
 .animate-color-in {
-  /* TODO: Create animation for adding a feature */
   --diffX: 0;
   --diffY: 0;
   position: absolute;

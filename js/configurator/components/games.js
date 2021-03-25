@@ -5,6 +5,7 @@ const settings = {
     },
     games: ["super-mario-world", "mega-man-7", "maximum-carnage", "killer-instinct", "dracula-x"],
     gameId: 1,
+    gameInserted: null,
 };
 
 export function games() {
@@ -21,20 +22,22 @@ function makeGameOption(game, template) {
     const clone = template.cloneNode(true);
     const gameOptionList = document.querySelector("[data-option=games]");
 
-    clone.querySelector(".c-option");
+    // Add images
+    clone.querySelector("img[data-image=top]").src = `images/cartridges/${game}-top.png`;
+    clone.querySelector("img[data-image=bottom]").src = `images/cartridges/${game}.png`;
 
-    // Add image
-    clone.querySelector(".c-option__image").src = `images/cartridges/${game}.png`;
-    // Add sticker to page on click
+    // Add ID
+    clone.querySelector(".c-option__image-container").setAttribute("data-game-id", settings.gameId);
 
-    // clone.querySelector(".c-option--game").addEventListener("mousedown", addGame);
+    // Count up
+    settings.gameId++;
 
     // Show sticker option
     gameOptionList.append(clone);
 }
 
-function makeEditable(game) {
-    const games = document.querySelectorAll(`[data-option=games] .c-option__image`);
+function makeEditable() {
+    const games = document.querySelectorAll(`[data-option=games] .c-option__image-container`);
 
     const screen = document.querySelector("[data-js-hook=screen]");
     const snesInsertGame = document.querySelector(".js-snes-insert-game").getBoundingClientRect();
@@ -43,6 +46,7 @@ function makeEditable(game) {
         console.log(game);
 
         const gamePosition = game.getBoundingClientRect();
+        console.log(gamePosition);
 
         let updatedGamePosition = game.getBoundingClientRect();
 
@@ -51,7 +55,6 @@ function makeEditable(game) {
             type: "x, y",
             liveSnap: {
                 points: function (event) {
-                    console.log(snesInsertGame.y - gamePosition.y - snesInsertGame.height);
                     return {
                         x: snesInsertGame.x - gamePosition.x, //
                         y: snesInsertGame.y - gamePosition.y - snesInsertGame.height,
@@ -64,13 +67,65 @@ function makeEditable(game) {
 
                 updatedGamePosition = game.getBoundingClientRect();
 
-                console.log("--------------------------");
-                console.log("insert: ", snesInsertGame);
-                console.log("gameInit: ", gamePosition);
-                console.log("gameUpdated: ", updatedGamePosition);
+                let test = snesInsertGame.y - gamePosition.y - snesInsertGame.height;
+                test = test.toFixed(2);
 
-                if (updatedGamePosition.y == snesInsertGame.y - gamePosition.y) {
-                    console.log("SNAP BABY");
+                const gameYposition = game.style.transform;
+                const firstComma = gameYposition.indexOf(",");
+                const lastComma = gameYposition.lastIndexOf(",");
+                let gameY = parseFloat(gameYposition.substring(firstComma + 2, lastComma - 2)).toFixed(2);
+                console.log(gameY, "vs", test);
+
+                // If snapped
+                if (test === gameY) {
+                    console.log("SNAP");
+                    game.querySelector("[data-image=top]").style.top = "-10px";
+                    game.querySelector("[data-image=top]").style.transform = "skewY(-2deg)";
+                    game.querySelector("[data-image=bottom]").style.opacity = "0";
+                    game.setAttribute("data-snapped", "true");
+                } else {
+                    game.querySelector("[data-image=bottom]").style.opacity = "1";
+                    game.querySelector("[data-image=top]").style.top = "";
+                    game.querySelector("[data-image=top]").style.transform = "";
+                    game.setAttribute("data-snapped", "false");
+                }
+            },
+            onDragEnd: function (event) {
+                updatedGamePosition = game.getBoundingClientRect();
+
+                let test = snesInsertGame.y - gamePosition.y - snesInsertGame.height;
+                test = test.toFixed(2);
+
+                const gameYposition = game.style.transform;
+                const firstComma = gameYposition.indexOf(",");
+                const lastComma = gameYposition.lastIndexOf(",");
+                let gameY = parseFloat(gameYposition.substring(firstComma + 2, lastComma - 2)).toFixed(2);
+                console.log(gameY, "vs", test);
+
+                // Go back if not snapped
+                if (gameY !== test) {
+                    TweenLite.to(this.target, {
+                        width: gamePosition.width,
+                        height: gamePosition.height,
+                        y: 0,
+                        x: 0,
+                    });
+                } else {
+                    // Check if any other game is snapped / inserted
+                    if (settings.gameInserted && settings.gameInserted !== this.target) {
+                        console.log("go away");
+                        TweenLite.to(settings.gameInserted, {
+                            width: gamePosition.width,
+                            height: gamePosition.height,
+                            y: 0,
+                            x: 0,
+                        });
+                        settings.gameInserted.querySelector("[data-image=bottom]").style.opacity = "1";
+                        settings.gameInserted.querySelector("[data-image=top]").style.top = "";
+                        settings.gameInserted.querySelector("[data-image=top]").style.transform = "";
+                        settings.gameInserted.setAttribute("data-snapped", "false");
+                    }
+                    settings.gameInserted = this.target;
                 }
             },
         });
