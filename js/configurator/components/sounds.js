@@ -2,7 +2,7 @@ export function sounds() {
     console.log("Sounds component is loaded...")
     
     const mySound = document.querySelector("audio");
-
+    mySound.volume = 0.2;
     mySound.muted = true;
     mySound.play();
     const buttonSelector = document.querySelector(".c-remote__button-group img:last-child");
