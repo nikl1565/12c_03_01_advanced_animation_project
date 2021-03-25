@@ -33,3 +33,65 @@ h1 {
 p {
   font-family: "courierprime";
 }
+
+/* GLOBAL ANIMATION */
+
+.cursed_animation {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.blink_fast {
+  animation: blink_kf 1s linear infinite both;
+  pointer-events: none;
+}
+
+@keyframes blink_kf {
+  0% {
+    opacity: 100%;
+  }
+
+  2% {
+    opacity: 10%;
+  }
+
+  4% {
+    opacity: 100%;
+  }
+
+  48% {
+    opacity: 100%;
+  }
+
+  50% {
+    opacity: 5%;
+  }
+
+  51% {
+    opacity: 95%;
+  }
+
+  93% {
+    opacity: 100%;
+  }
+
+  95% {
+    opacity: 0%;
+  }
+
+  96% {
+    opacity: 100%;
+  }
+}
+
+.hide {
+  display: none;
+}
