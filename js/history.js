@@ -7,7 +7,9 @@ window.addEventListener("DOMContentLoaded", init);
 function init() {
 
     console.log("Dom loaded")
-    
+    document.querySelector("#Layer_1").addEventListener("click", function(){
+        location.href = 'index.html'; // because fucking a tag was being rude
+    });
     pageLoadAnimations();
     loadGSAP();
 }
