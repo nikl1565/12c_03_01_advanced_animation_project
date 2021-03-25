@@ -31,7 +31,9 @@
     --gutter: 3rem;
   }
 }
-
+body {
+  background-color: #1e1c1d;
+}
 nav {
   display: flex;
   justify-content: center;

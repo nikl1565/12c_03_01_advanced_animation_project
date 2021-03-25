@@ -3,7 +3,32 @@ const settings = {
         game: document.querySelector(".t-game").content,
         gameOption: document.querySelector(".t-game-option").content,
     },
-    games: ["super-mario-world", "mega-man-7", "maximum-carnage", "killer-instinct", "dracula-x"],
+    games: [
+        {
+            gameName: "super-mario-world",
+            category: "games",
+        },
+        {
+            gameName: "mega-man-7",
+            category: "games",
+        },
+        {
+            gameName: "maximum-carnage",
+            category: "games",
+        },
+        {
+            gameName: "killer-instinct",
+            category: "games",
+        },
+        {
+            gameName: "dracula-x",
+            category: "games",
+        },
+        {
+            gameName: "cursed",
+            category: "lost-games",
+        },
+    ],
     gameId: 1,
     gameInserted: null,
 };
@@ -20,14 +45,18 @@ export function games() {
 
 function makeGameOption(game, template) {
     const clone = template.cloneNode(true);
-    const gameOptionList = document.querySelector("[data-option=games]");
+    const gameOptionList = document.querySelector(`[data-option=${game.category}]`);
+    console.log(game);
 
     // Add images
-    clone.querySelector("img[data-image=top]").src = `images/cartridges/${game}-top.png`;
-    clone.querySelector("img[data-image=bottom]").src = `images/cartridges/${game}.png`;
+    clone.querySelector("img[data-image=top]").src = `images/cartridges/${game.gameName}-top.png`;
+    clone.querySelector("img[data-image=bottom]").src = `images/cartridges/${game.gameName}.png`;
 
     // Add ID
     clone.querySelector(".c-option__image-container").setAttribute("data-game-id", settings.gameId);
+
+    // Add name
+    clone.querySelector(".c-option__image-container").setAttribute("data-game-name", game.gameName);
 
     // Count up
     settings.gameId++;
@@ -37,16 +66,13 @@ function makeGameOption(game, template) {
 }
 
 function makeEditable() {
-    const games = document.querySelectorAll(`[data-option=games] .c-option__image-container`);
+    const games = document.querySelectorAll(`.c-option__image-container`);
 
     const screen = document.querySelector("[data-js-hook=screen]");
     const snesInsertGame = document.querySelector(".js-snes-insert-game").getBoundingClientRect();
 
     games.forEach((game) => {
-        console.log(game);
-
         const gamePosition = game.getBoundingClientRect();
-        console.log(gamePosition);
 
         let updatedGamePosition = game.getBoundingClientRect();
 
@@ -126,10 +152,19 @@ function makeEditable() {
                         settings.gameInserted.setAttribute("data-snapped", "false");
                     }
                     settings.gameInserted = this.target;
+
+                    if (settings.gameInserted.dataset.gameName === "cursed") {
+                        console.log("START SPILLET HEHEHEHEHE");
+                        setTimeout(startGame, 3000);
+                    }
                 }
             },
         });
     });
 
     console.log(`x: ${snesInsertGame.x} y: ${snesInsertGame.y}`);
+}
+
+function startGame() {
+    window.location.href = "game.html";
 }
