@@ -1,69 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>12c.03.01 - Advanced Animation project</title>
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/global.css">
-    <link rel="stylesheet" href="css/configurator.css">
+    <link rel="icon" href="images/icons/favicon.png" sizes="32x32">
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/configurator.css" />
     <script src="js/configurator/app.js" type="module"></script>
-</head>
-<body>
+  </head>
+  <body>
+    <nav>
+      <div id="historyLogo">
+        <a href="index.html">
+          <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 70">
+            <g>
+              <path
+                d="M4.69,62.06V17.38H8.12V13.94h3.44V10.5H15V7.06H59.69V51.75H56.25v3.44H52.81v3.43H49.38v3.44Zm41.25-3.44V20.81H8.12V58.62Zm3.44-44.68h3.43V10.5H15v3.44H11.56v3.44H49.38ZM18.44,38V31.12h3.44V27.69H32.19v3.43h3.43v3.44H32.19V31.12H21.88V38Zm3.44,13.75V48.31H18.44V44.88h3.44v3.43H32.19V41.44h3.43v6.87H32.19v3.44Zm0-10.31V38H32.19v3.44ZM52.81,51.75h3.44V13.94H52.81v3.44H49.38V55.19h3.43Z"
+                fill="#CE3333"
+              />
+              <path
+                d="M66.56,62.06V17.38H70V13.94h3.44V10.5h3.44V7.06h44.68V51.75h-3.44v3.44h-3.43v3.43h-3.44v3.44Zm41.25-3.44V20.81H70V58.62Zm3.44-44.68h3.44V10.5H76.88v3.44H73.44v3.44h37.81ZM80.31,51.75V27.69h6.88v3.43h3.43V48.31h3.44V27.69H97.5V51.75H90.62V48.31H87.19V31.12H83.75V51.75Zm34.38,0h3.43V13.94h-3.43v3.44h-3.44V55.19h3.44Z"
+                fill="#CE3333"
+              />
+              <path
+                d="M128.44,62.06V17.38h3.44V13.94h3.43V10.5h3.44V7.06h44.69V51.75H180v3.44h-3.44v3.43h-3.44v3.44Zm41.25-3.44V20.81H131.88V58.62Zm3.43-44.68h3.44V10.5H138.75v3.44h-3.44v3.44h37.81ZM142.19,51.75V27.69h17.19v3.43H145.62V38h13.76v3.44H145.62v6.87h13.76v3.44Zm34.37,0H180V13.94h-3.44v3.44h-3.44V55.19h3.44Z"
+                fill="#CE3333"
+              />
+              <path
+                d="M190.31,62.06V17.38h3.44V13.94h3.44V10.5h3.43V7.06h44.69V51.75h-3.43v3.44h-3.44v3.43H235v3.44Zm41.25-3.44V20.81H193.75V58.62ZM235,13.94h3.44V10.5H200.62v3.44h-3.43v3.44H235ZM204.06,38V31.12h3.44V27.69h10.31v3.43h3.44v3.44h-3.44V31.12H207.5V38Zm3.44,13.75V48.31h-3.44V44.88h3.44v3.43h10.31V41.44h3.44v6.87h-3.44v3.44Zm0-10.31V38h10.31v3.44Zm30.94,10.31h3.44V13.94h-3.44v3.44H235V55.19h3.44Z"
+                fill="#CE3333"
+              />
+            </g>
+          </svg>
+        </a>
+      </div>
+    </nav>
+
     <header class="c-site-header"></header>
     </header>
 
     <main class="c-site-content">
-        <div class="o-container">
-            <h1>SNES configurator</h1>
+      <div class="o-container">
+        <h1>SNES configurator</h1>
         <section class="c-configurator">
-            <article class="c-tv">
-                <div class="c-tv__frame">
-                    <div class="c-tv__screen" data-js-hook="screen">
+          <article class="c-tv">
+            <div class="c-tv__frame">
+              <div class="c-tv__screen" data-js-hook="screen"></div>
+              <div class="c-tv__button-group">
+                <button class="c-tv__button"></button>
+                <button class="c-tv__button c-tv__button--primary"></button>
+              </div>
+            </div>
+          </article>
 
-                    </div>
-                    <div class="c-tv__button-group">
-                        <button class="c-tv__button"></button>
-                        <button class="c-tv__button c-tv__button--primary"></button>
-                    </div>
-                </div>
-            </article>
-
-            <article class="c-remote">
-                <div class="c-remote__frame">
-                <div class="c-remote__button-group">
-                        <img class="c-remote__button" src="images/icons/power-button.svg" alt="Red power button">
-                        <img class="c-remote__button" src="images/icons/mute.svg" alt="Grey mute button">
-                </div>
-                <div class="c-remote__option-group">
-                    <h2 class="c-remote__option-title">Colors</h2>
-                    <ul class="c-option-list" data-field="colors"></ul>
-                </div>
-                <div class="c-remote__option-group">
-                    <h2 class="c-remote__option-title">Stickers</h2>
-                    <ul class="c-option-list" data-option="stickers"></ul>
-                </div>
-                <div class="c-remote__option-group">
-                    <h2 class="c-remote__option-title">Text</h2>
-                    <ul class="c-option-list" data-option="text"></ul>
-                </div>
-                <div class="c-remote__option-group">
-                    <h2 class="c-remote__option-title">Games</h2>
-                    <ul class="c-option-list" data-option="games"></ul>
-                </div>
-                </div>
-            </article>
-
+          <article class="c-remote">
+            <div class="c-remote__frame">
+              <div class="c-remote__button-group">
+                <img class="c-remote__button" src="images/icons/power-button.svg" alt="Red power button" />
+                <img class="c-remote__button" src="images/icons/mute.svg" alt="Grey mute button" />
+              </div>
+              <div class="c-remote__option-group">
+                <h2 class="c-remote__option-title">Colors</h2>
+                <ul class="c-option-list" data-field="colors"></ul>
+              </div>
+              <div class="c-remote__option-group">
+                <h2 class="c-remote__option-title">Stickers</h2>
+                <ul class="c-option-list" data-option="stickers"></ul>
+              </div>
+              <div class="c-remote__option-group">
+                <h2 class="c-remote__option-title">Text</h2>
+                <ul class="c-option-list"></ul>
+              </div>
+              <div class="c-remote__option-group">
+                <h2 class="c-remote__option-title">Games</h2>
+                <ul class="c-option-list"></ul>
+              </div>
+            </div>
+          </article>
         </section>
-        </div>
+      </div>
     </main>
 
     <footer class="c-site-footer"></footer>
 
     <template class="t-color">
-        <li class="c-color"></li>
-   </template>
+      <li class="c-color"></li>
+    </template>
 
 <template class="t-sticker-option">
     <li class="c-option c-option--sticker">
@@ -80,17 +105,80 @@
     </li>
 </template>
 
-   <template class="t-sticker">
-    <div class="c-sticker">
-        <img class="c-sticker__image" src="#" alt="">
+    <template class="t-sticker">
+      <div class="c-sticker">
+        <img class="c-sticker__image" src="#" alt="" />
         <div class="c-sticker__options">
-            <svg class="c-sticker__option-icon c-sticker__option-icon--rotate" data-sticker-action="rotate" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-refresh-ccw"><polyline points="1 4 1 10 7 10"></polyline><polyline points="23 20 23 14 17 14"></polyline><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"></path></svg>
-            <svg class="c-sticker__option-icon c-sticker__option-icon--delete" data-sticker-action="delete" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
-            <svg class="c-sticker__option-icon c-sticker__option-icon--resize" data-sticker-action="resize" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-crop"><path d="M6.13 1L6 16a2 2 0 0 0 2 2h15"></path><path d="M1 6.13L16 6a2 2 0 0 1 2 2v15"></path></svg>
-            <svg class="c-sticker__option-icon c-sticker__option-icon--duplicate" data-sticker-action="duplicate" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-copy"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+          <svg
+            class="c-sticker__option-icon c-sticker__option-icon--rotate"
+            data-sticker-action="rotate"
+            xmlns="http://www.w3.org/2000/svg"
+            width="28"
+            height="28"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="feather feather-refresh-ccw"
+          >
+            <polyline points="1 4 1 10 7 10"></polyline>
+            <polyline points="23 20 23 14 17 14"></polyline>
+            <path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"></path>
+          </svg>
+          <svg
+            class="c-sticker__option-icon c-sticker__option-icon--delete"
+            data-sticker-action="delete"
+            xmlns="http://www.w3.org/2000/svg"
+            width="28"
+            height="28"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="feather feather-trash-2"
+          >
+            <polyline points="3 6 5 6 21 6"></polyline>
+            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+            <line x1="10" y1="11" x2="10" y2="17"></line>
+            <line x1="14" y1="11" x2="14" y2="17"></line>
+          </svg>
+          <svg
+            class="c-sticker__option-icon c-sticker__option-icon--resize"
+            data-sticker-action="resize"
+            xmlns="http://www.w3.org/2000/svg"
+            width="28"
+            height="28"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="feather feather-crop"
+          >
+            <path d="M6.13 1L6 16a2 2 0 0 0 2 2h15"></path>
+            <path d="M1 6.13L16 6a2 2 0 0 1 2 2v15"></path>
+          </svg>
+          <svg
+            class="c-sticker__option-icon c-sticker__option-icon--duplicate"
+            data-sticker-action="duplicate"
+            xmlns="http://www.w3.org/2000/svg"
+            width="28"
+            height="28"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="feather feather-copy"
+          >
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+          </svg>
         </div>
-    </div>
-   </template>
+      </div>
+    </template>
 
    <template class="t-game">
     <div class="c-game">
@@ -100,5 +188,5 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/Draggable.min.js"></script>
-</body>
+  </body>
 </html>
