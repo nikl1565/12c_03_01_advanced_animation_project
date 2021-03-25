@@ -1,0 +1,132 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+h2 {
+  font-family: "Press Start 2P", cursive;
+  font-size: 20px;
+  color: red;
+  font-weight: 100;
+  text-align: center;
+}
+
+span {
+  margin-bottom: 10px;
+}
+
+button {
+  font-family: "Press Start 2P", cursive;
+  font-size: 20px;
+  background-color: rgba(255, 255, 255, 0);
+  border: 2px solid red;
+  color: red;
+  padding: 5px;
+}
+
+.window {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 350px;
+  height: 600px;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body {
+  background-color: rgb(25, 25, 25);
+}
+
+#game_screen {
+  border: 5px solid black;
+  background-color: rgb(255, 255, 255);
+  image-rendering: pixelated;
+
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+#game_screen_two {
+  border: 5px solid black;
+  background-color: rgb(255, 255, 255);
+  image-rendering: pixelated;
+
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.hide {
+  display: none;
+}
+
+.cooltext {
+  display: inline-block;
+}
+
+.disappear {
+  animation: disappear_kf 1s ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes disappear_kf {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+.reappear {
+  animation: reappear_kf 5s ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes reappear_kf {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.letter {
+  --delay: 0;
+  animation: letter_kf 1s cubic-bezier(0.66, 0.06, 0.26, 1.28);
+  animation-fill-mode: both;
+  animation-delay: calc(var(--delay) * 0.02s);
+}
+
+@keyframes letter_kf {
+  0% {
+    opacity: 0;
+    transform: translateY(4vw);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0vw);
+  }
+}

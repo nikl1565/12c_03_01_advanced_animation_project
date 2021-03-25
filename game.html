@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/game.css" />
+    <title>GAME</title>
+  </head>
+  <body>
+    <section class="modal">
+      <div class="window">
+        <h2 class="text1">What happened...?</h2>
+        <h2 class="hide text2">Where am I...?</h2>
+        <h2 class="hide text3">I need to get out of here.</h2>
+        <button id="nextbtn">NEXT</button>
+      </div>
+    </section>
+
+    <section class="game_over modal hide">
+      <div class="window">
+        <h2>GAME OVER</h2>
+        <button id="retry">RETRY</button>
+      </div>
+    </section>
+
+    <section class="game_won modal hide">
+      <div class="window">
+        <h2>YOU WIN</h2>
+        <button id="win">RETURN</button>
+      </div>
+    </section>
+    <canvas class="hide" id="game_screen" width="350" height="600"> </canvas>
+    <canvas class="hide" id="game_screen_two" width="350" height="600"> </canvas>
+
+    <script src="js/gamecontroller.js"></script>
+  </body>
+</html>
