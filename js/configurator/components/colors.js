@@ -1,145 +1,143 @@
 export function colors() {
-  colorButtons();
-  paintElements();
+    colorButtons();
+    paintElements();
 
-  console.log("Colors component is loaded...");
+    console.log("Colors component is loaded...");
 }
 
 const settings = {
-  pickedColor: "#FFFFFF",
-  colors: [
-    "#FF0000", //
-    "#FF8000",
-    "#FFFF00",
-    "#00FF00",
-    "#00FF80",
-    "#00FFFF",
-    "#0080FF",
-    "#0000FF",
-    "#8000FF",
-    "#FF00FF",
-    "#FF0080",
-    "#FFFFFF",
-  ],
-  templates: {
-    color: document.querySelector(".t-color").content,
-  },
-  hooks: {
-    colorList: document.querySelector("[data-field=colors]"),
-  },
+    pickedColor: "#FF0000",
+    colors: [
+        "#FF0000", //
+        "#FF8000",
+        "#FFFF00",
+        "#00FF00",
+        "#00FF80",
+        "#00FFFF",
+        "#0080FF",
+        "#0000FF",
+        "#8000FF",
+        "#FF00FF",
+        "#FF0080",
+        "#FFFFFF",
+    ],
+    templates: {
+        color: document.querySelector(".t-color").content,
+    },
+    hooks: {
+        colorList: document.querySelector("[data-field=colors]"),
+    },
 };
 
 function colorButtons() {
-  showColorButtons();
+    showColorButtons();
 
-  function showColorButtons() {
-    const templateColor = settings.templates.color;
-    settings.colors.forEach((color) => {
-      const clone = templateColor.cloneNode(true);
+    function showColorButtons() {
+        const templateColor = settings.templates.color;
+        settings.colors.forEach((color) => {
+            const clone = templateColor.cloneNode(true);
 
-      clone.querySelector(".c-color").setAttribute("data-color", color);
-      clone.querySelector(".c-color").style.setProperty("--color", color);
+            clone.querySelector(".c-color").setAttribute("data-color", color);
+            clone.querySelector(".c-color").style.setProperty("--color", color);
 
-      // TODO: Highlight pickedColor on load
-      // if (color === settings.pickedColor) {
-      //     clone.querySelector(".c-color-picker__color").classList.add("is-active");
-      // }
+            clone.querySelector(".c-color").addEventListener("click", changeColor);
 
-      clone.querySelector(".c-color").addEventListener("click", changeColor);
+            settings.hooks.colorList.appendChild(clone);
+        });
+    }
 
-      settings.hooks.colorList.appendChild(clone);
-    });
-  }
+    // Highlight pickedColor on load
+    if (settings.pickedColor) {
+        const defaultColor = document.querySelector(`.c-color[data-color="${settings.pickedColor}"]`);
+        selectedColor(defaultColor);
+    }
 
-  function changeColor() {
-    const clickedColor = this.dataset.color;
+    hoverElements(settings.pickedColor);
 
-    // Set picked color
-    settings.pickedColor = clickedColor;
-    hoverElements(clickedColor);
-    selectedColor(this);
-  }
+    function changeColor() {
+        const clickedColor = this.dataset.color;
 
-  function selectedColor(clickedColor) {
-    const allColors = document.querySelectorAll(".c-color");
-    allColors.forEach((color) => {
-      color.classList.remove("selected_color");
-    });
-    clickedColor.classList.add("selected_color");
-  }
+        // Set picked color
+        settings.pickedColor = clickedColor;
+        hoverElements(clickedColor);
+        selectedColor(this);
+    }
+
+    function selectedColor(clickedColor) {
+        const allColors = document.querySelectorAll(".c-color");
+        allColors.forEach((color) => {
+            color.classList.remove("selected_color");
+        });
+        clickedColor.classList.add("selected_color");
+    }
 }
 
 function paintElements() {
-  const elementsToPaint = document.querySelectorAll(".snes__part");
+    const elementsToPaint = document.querySelectorAll(".snes__part");
 
-  console.log(elementsToPaint);
+    console.log(elementsToPaint);
 
-  elementsToPaint.forEach((elementToPaint) => {
-    elementToPaint.addEventListener("click", paintElement);
-  });
+    elementsToPaint.forEach((elementToPaint) => {
+        elementToPaint.addEventListener("click", paintElement);
+    });
 
-  function paintElement(event) {
-    const clickedElement = event.target;
+    function paintElement(event) {
+        const clickedElement = event.target;
 
-    // get pickedColor from settings
-    const pickedColor = settings.pickedColor;
-    const pickedColorElement = document.querySelector(`[data-color="${pickedColor}"]`);
-    const pickedColorElementClone = document.querySelector(`[data-color="${pickedColor}"]`).cloneNode(true);
-    console.log(pickedColorElementClone);
+        // get pickedColor from settings
+        const pickedColor = settings.pickedColor;
+        const pickedColorElement = document.querySelector(`[data-color="${pickedColor}"]`);
+        console.log(pickedColorElement);
 
-    console.log(pickedColorElement);
+        const pickedColorChild = pickedColorElement.firstElementChild.cloneNode(true);
+        console.log(pickedColorChild);
 
-    const start = pickedColorElement.getBoundingClientRect();
-    const end = clickedElement.getBoundingClientRect();
+        pickedColorElement.append(pickedColorChild);
 
-    const elementHeight = end.height / 2;
-    console.log(elementHeight);
+        console.log(pickedColorElement);
 
-    const elementWidth = end.width / 2;
+        const start = pickedColorChild.getBoundingClientRect();
+        const end = clickedElement.getBoundingClientRect();
 
-    const diffX = end.x - start.x + elementWidth;
-    console.log(diffX);
-    const diffY = end.y - start.y + elementHeight;
-    console.log(diffY);
+        const elementHeight = end.height / 2;
+        console.log(elementHeight);
 
-    pickedColorElement.style.setProperty("--diffX", diffX);
-    pickedColorElement.style.setProperty("--diffY", diffY);
-    pickedColorElement.classList.add("animate-color-in");
+        const elementWidth = end.width / 2;
 
-    pickedColorElement.addEventListener("animationend", animateColor);
-    // TODO:
-    // document.querySelector(".c-color-picker__color").classList.add("animate-color-scale");
+        const diffX = end.x - start.x + elementWidth;
+        console.log(diffX);
+        const diffY = end.y - start.y + elementHeight;
+        console.log(diffY);
 
-    function animateColor() {
-      pickedColorElement.classList.remove("animate-color-in");
-      pickedColorElement.removeEventListener("animationend", animateColor);
-      clickedElement.style.fill = settings.pickedColor;
+        pickedColorChild.style.setProperty("--diffX", diffX);
+        pickedColorChild.style.setProperty("--diffY", diffY);
+
+        pickedColorChild.classList.add("animate-color-in");
+
+        pickedColorChild.addEventListener("animationend", animateColor);
+
+        function animateColor() {
+            pickedColorChild.removeEventListener("animationend", animateColor);
+            pickedColorChild.remove();
+            clickedElement.style.fill = settings.pickedColor;
+        }
     }
-  }
-
-  // TODO:
-  // const findLatestClickedColor = document.querySelector(".c-color-picker__color.is-active");
-  // if (findLatestClickedColor) {
-  //     findLatestClickedColor.classList.remove("is-active");
-  // }
-  // clickedColorButton.classList.add("is-active");
 }
 
 //Hover effect
 function hoverElements(clickedColor) {
-  const parts = document.querySelectorAll("svg .snes__part");
-  console.log(clickedColor);
-  parts.forEach((part) => {
-    part.addEventListener("mouseover", () => {
-      // part.classList.add("g-to-color_active");
-      part.style.fill = clickedColor;
-    });
-  });
+    const parts = document.querySelectorAll("svg .snes__part");
+    console.log(clickedColor);
 
-  parts.forEach((part) => {
-    part.addEventListener("mouseout", () => {
-      //   part.classList.remove("g-to-color_active");
-      part.style.fill = "#FFFFFF";
+    parts.forEach((part) => {
+        part.addEventListener("mouseover", () => {
+            part.style.fill = clickedColor;
+        });
     });
-  });
+
+    parts.forEach((part) => {
+        part.addEventListener("mouseout", () => {
+            part.style.fill = "#FFFFFF";
+        });
+    });
 }
