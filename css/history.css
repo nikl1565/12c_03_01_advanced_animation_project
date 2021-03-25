@@ -12,9 +12,8 @@ nav {
 }
 
 nav svg {
-  height: 6vh;
-  width: auto;
-  margin-top: 40px;
+  width: 25vh;
+  margin-top: 35px;
   cursor: pointer;
 }
 
