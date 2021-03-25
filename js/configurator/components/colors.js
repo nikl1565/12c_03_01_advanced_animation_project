@@ -57,6 +57,16 @@ function colorButtons() {
 
     // Set picked color
     settings.pickedColor = clickedColor;
+
+    selectedColor(this);
+  }
+
+  function selectedColor(clickedColor) {
+    const allColors = document.querySelectorAll(".c-color");
+    allColors.forEach((color) => {
+      color.classList.remove("selected_color");
+    });
+    clickedColor.classList.add("selected_color");
   }
 }
 
@@ -123,14 +133,12 @@ function hoverElements() {
   parts.forEach((part) => {
     part.addEventListener("mouseover", () => {
       part.classList.add("g-to-color_active");
-      console.log("on");
     });
   });
 
   parts.forEach((part) => {
     part.addEventListener("mouseout", () => {
       part.classList.remove("g-to-color_active");
-      console.log("removed");
     });
   });
 }

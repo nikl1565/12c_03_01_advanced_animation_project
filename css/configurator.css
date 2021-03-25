@@ -292,6 +292,10 @@ img {
   animation: dash_kf 1s linear forwards;
 }
 
+.selected_color {
+  border: 2px solid white;
+}
+
 @keyframes animate-color-in_kf {
   0% {
     transform: translate(0px, 0px);
