@@ -1,3 +1,8 @@
+img {
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
+}
+
 nav {
   display: flex;
   justify-content: center;
@@ -122,7 +127,11 @@ h3 {
 .customer_img_container {
   pointer-events: none;
 
-  background: linear-gradient(0deg, rgba(206, 51, 51, 0.5) 0%, rgba(30, 28, 29, 0.5) 100%);
+  background: linear-gradient(
+    0deg,
+    rgba(206, 51, 51, 0.5) 0%,
+    rgba(30, 28, 29, 0.5) 100%
+  );
   box-shadow: 0px 2px 5px rgb(106, 26, 26);
   display: flex;
   align-items: center;
