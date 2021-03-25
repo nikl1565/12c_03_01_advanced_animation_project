@@ -14,7 +14,7 @@ const config = {
 
 async function start() {
   //REDIRECTS TO GAME IF STATE IS CURSED
-  if (localStorage.getItem("cursed") === "true") {
+  if (sessionStorage.getItem("cursed") === "true") {
     document.querySelector(".cursed_animation").classList.remove("hide");
     setTimeout(() => {
       window.location.href = "game.html";

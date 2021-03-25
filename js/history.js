@@ -4,16 +4,16 @@ window.addEventListener("DOMContentLoaded", init);
 
 function init() {
   //REDIRECTS TO GAME IF STATE IS CURSED
-  if (localStorage.getItem("cursed") === "true") {
+  if (sessionStorage.getItem("cursed") === "true") {
     document.querySelector(".cursed_animation").classList.remove("hide");
     setTimeout(() => {
       window.location.href = "game.html";
     }, 1000);
   }
 
-  console.log("Dom loaded")
-  document.querySelector("#Layer_1").addEventListener("click", function(){
-    location.href = 'index.html'; // because fucking a tag was being rude
+  console.log("Dom loaded");
+  document.querySelector("#Layer_1").addEventListener("click", function () {
+    location.href = "index.html"; // because fucking a tag was being rude
   });
   pageLoadAnimations();
   loadGSAP();
