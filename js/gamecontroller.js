@@ -11,7 +11,7 @@ let n = 1;
 
 function init() {
   //SETS STATE TO CURSED
-  localStorage.setItem("cursed", "true");
+  sessionStorage.setItem("cursed", "true");
   const button = document.querySelector("#nextbtn");
   let input = document.querySelector(`.text${n}`).textContent;
   let container = document.querySelector(`.text${n}`);
@@ -415,7 +415,7 @@ function configReturn() {
   game_screen_two.classList.remove("hide");
   document.querySelector(".game_won").classList.add("hide");
   setInterval(updateTwo, 10); */
-  localStorage.setItem("cursed", "false");
+  sessionStorage.setItem("cursed", "false");
   setTimeout(() => {
     window.location.href = "configurator.html";
   }, 2000);
