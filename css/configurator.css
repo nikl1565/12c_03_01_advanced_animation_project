@@ -135,8 +135,21 @@ img {
   height: 38px;
 }
 
-.c-remote__button:last-child {
+.c-remote__button:last-child,
+.c-remote__button:nth-child(2),
+.c-remote__button:nth-child(3) {
   cursor: pointer;
+}
+
+.c-remote__button:last-child:hover,
+.c-remote__button:nth-child(2):hover,
+.c-remote__button:nth-child(3):hover {
+  opacity: 0.8;
+}
+
+.buttonClickAnimation {
+  animation: buttonPress;
+  animation-duration: 0.1s;
 }
 
 .c-remote__option-title {
@@ -312,5 +325,16 @@ img {
 
   100% {
     transform: translate(calc(var(--diffX) * 1px), calc(var(--diffY) * 1px));
+  }
+}
+
+@keyframes buttonPress {
+  40% {
+    transform: scaleY(0.9);
+    transform: translateY(2px);
+  }
+  100% {
+    transform: scaleY(1);
+    transform: translateY(0px);
   }
 }
