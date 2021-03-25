@@ -87,12 +87,16 @@ function paintElements() {
         // get pickedColor from settings
         const pickedColor = settings.pickedColor;
         const pickedColorElement = document.querySelector(`[data-color="${pickedColor}"]`);
-        const pickedColorElementClone = document.querySelector(`[data-color="${pickedColor}"]`).cloneNode(true);
-        console.log(pickedColorElementClone);
+        console.log(pickedColorElement);
+
+        const pickedColorChild = pickedColorElement.firstElementChild.cloneNode(true);
+        console.log(pickedColorChild);
+
+        pickedColorElement.append(pickedColorChild);
 
         console.log(pickedColorElement);
 
-        const start = pickedColorElement.getBoundingClientRect();
+        const start = pickedColorChild.getBoundingClientRect();
         const end = clickedElement.getBoundingClientRect();
 
         const elementHeight = end.height / 2;
@@ -105,15 +109,16 @@ function paintElements() {
         const diffY = end.y - start.y + elementHeight;
         console.log(diffY);
 
-        pickedColorElement.style.setProperty("--diffX", diffX);
-        pickedColorElement.style.setProperty("--diffY", diffY);
-        pickedColorElement.classList.add("animate-color-in");
+        pickedColorChild.style.setProperty("--diffX", diffX);
+        pickedColorChild.style.setProperty("--diffY", diffY);
 
-        pickedColorElement.addEventListener("animationend", animateColor);
+        pickedColorChild.classList.add("animate-color-in");
+
+        pickedColorChild.addEventListener("animationend", animateColor);
 
         function animateColor() {
-            pickedColorElement.classList.remove("animate-color-in");
-            pickedColorElement.removeEventListener("animationend", animateColor);
+            pickedColorChild.removeEventListener("animationend", animateColor);
+            pickedColorChild.remove();
             clickedElement.style.fill = settings.pickedColor;
         }
     }
@@ -123,6 +128,7 @@ function paintElements() {
 function hoverElements(clickedColor) {
     const parts = document.querySelectorAll("svg .snes__part");
     console.log(clickedColor);
+
     parts.forEach((part) => {
         part.addEventListener("mouseover", () => {
             part.style.fill = clickedColor;

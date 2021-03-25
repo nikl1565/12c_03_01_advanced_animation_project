@@ -79,6 +79,7 @@ function makeEditable() {
         // Move
         const moveSnap = Draggable.create(game, {
             type: "x, y",
+            allowEventDefault: true,
             liveSnap: {
                 points: function (event) {
                     return {
@@ -107,10 +108,10 @@ function makeEditable() {
                     console.log("SNAP");
                     game.querySelector("[data-image=top]").style.top = "-10px";
                     game.querySelector("[data-image=top]").style.transform = "skewY(-2deg)";
-                    game.querySelector("[data-image=bottom]").style.opacity = "0";
+                    game.querySelector("[data-image=bottom]").style.display = "none";
                     game.setAttribute("data-snapped", "true");
                 } else {
-                    game.querySelector("[data-image=bottom]").style.opacity = "1";
+                    game.querySelector("[data-image=bottom]").style.display = "block";
                     game.querySelector("[data-image=top]").style.top = "";
                     game.querySelector("[data-image=top]").style.transform = "";
                     game.setAttribute("data-snapped", "false");
@@ -146,7 +147,7 @@ function makeEditable() {
                             y: 0,
                             x: 0,
                         });
-                        settings.gameInserted.querySelector("[data-image=bottom]").style.opacity = "1";
+                        settings.gameInserted.querySelector("[data-image=bottom]").style.display = "block";
                         settings.gameInserted.querySelector("[data-image=top]").style.top = "";
                         settings.gameInserted.querySelector("[data-image=top]").style.transform = "";
                         settings.gameInserted.setAttribute("data-snapped", "false");
@@ -160,9 +161,21 @@ function makeEditable() {
                 }
             },
         });
+
+        const insertGame = document.querySelector(".js-snes-insert-game");
+
+        game.addEventListener("mousedown", () => {
+            highlightPart(insertGame);
+        });
     });
 
     console.log(`x: ${snesInsertGame.x} y: ${snesInsertGame.y}`);
+}
+
+function highlightPart(part) {
+    console.log("highliiiight");
+
+    part.style.fill = "rgba(212,175,55,1)";
 }
 
 function startGame() {
